@@ -1,2 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /content/resources.json
+
+Sitemap: https://kz-personal-website.pages.dev/sitemap.xml

@@ -4,8 +4,10 @@
   const config = window.KZ_CONFIG || {};
   const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'];
   const EVENT_NAMES = Object.freeze({
+    PAGE_VIEW: 'page_view',
     INSTAGRAM_CLICK: 'instagram_click',
     YOUTUBE_CLICK: 'youtube_click',
+    SOCIAL_PLACEHOLDER_CLICK: 'social_placeholder_click',
     VIEW_ZERO_TO_ONE: 'view_zero_to_one',
     VIEW_RIGHT_NOW: 'view_right_now',
     VIEW_WHATS_NEXT: 'view_whats_next',
@@ -13,6 +15,10 @@
     SCROLL_50: 'scroll_50',
     SCROLL_75: 'scroll_75',
     SCROLL_90: 'scroll_90',
+    RESOURCE_VIEW: 'resource_view',
+    RESOURCE_CTA_CLICK: 'resource_cta_click',
+    RESOURCE_DOWNLOAD: 'resource_download',
+    RESOURCE_TOOL_USE: 'resource_tool_use',
     EMAIL_SIGNUP: 'email_signup',
     PRODUCT_VIEW: 'product_view',
     SHOP_CLICK: 'shop_click',
@@ -20,6 +26,7 @@
     PURCHASE: 'purchase'
   });
   const STORAGE_KEY = 'kz_tracking_context_v1';
+  const SESSION_KEY = 'kz_analytics_session_v1';
   const fired = new Set();
 
   const safeStorage = {
@@ -34,7 +41,8 @@
   };
 
   function buildContext() {
-    const stored = safeStorage.read();
+    const saved = safeStorage.read();
+    const stored = saved && typeof saved === 'object' ? saved : {};
     const params = new URLSearchParams(window.location.search);
     const utm = { ...(stored.utm || {}) };
     UTM_KEYS.forEach(key => {
@@ -52,6 +60,64 @@
 
   const context = buildContext();
 
+  function getSessionId() {
+    try {
+      const existing = sessionStorage.getItem(SESSION_KEY);
+      if (existing) return existing;
+      const generated = crypto.randomUUID();
+      sessionStorage.setItem(SESSION_KEY, generated);
+      return generated;
+    } catch (_) {
+      return crypto.randomUUID();
+    }
+  }
+
+  const sessionId = getSessionId();
+
+  function deviceType() {
+    const width = Math.max(window.innerWidth || 0, screen.width || 0);
+    if (width <= 767) return 'Mobile';
+    if (width <= 1100) return 'Tablet';
+    return 'Desktop';
+  }
+
+  function referrerHost() {
+    try { return document.referrer ? new URL(document.referrer).hostname.slice(0, 200) : ''; }
+    catch (_) { return ''; }
+  }
+
+  function persistEvent(detail) {
+    const properties = detail.properties || {};
+    const payload = {
+      event_name: detail.name,
+      page_path: properties.page_path || window.location.pathname,
+      referrer: referrerHost(),
+      device_type: deviceType(),
+      utm_source: properties.utm_source || '',
+      utm_medium: properties.utm_medium || '',
+      utm_campaign: properties.utm_campaign || '',
+      utm_content: properties.utm_content || '',
+      resource_slug: properties.resource_slug || '',
+      placement: properties.placement || '',
+      scroll_depth: properties.depth_percent || null,
+      session_id: sessionId
+    };
+    const body = JSON.stringify(payload);
+    try {
+      if (navigator.sendBeacon) {
+        const sent = navigator.sendBeacon('/api/events', new Blob([body], { type: 'application/json' }));
+        if (sent) return;
+      }
+      fetch('/api/events', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body,
+        keepalive: true,
+        credentials: 'same-origin'
+      }).catch(() => {});
+    } catch (_) { /* Analytics failures never block the website. */ }
+  }
+
   function trackEvent(eventName, properties = {}, options = {}) {
     try {
       if (!eventName || typeof eventName !== 'string') return false;
@@ -65,6 +131,7 @@
         timestamp: new Date().toISOString()
       };
       window.dispatchEvent(new CustomEvent('kz:analytics', { detail }));
+      persistEvent(detail);
       if (config.debugAnalytics) console.info('[KZ analytics]', detail);
       if (typeof config.trackEvent === 'function') {
         try { config.trackEvent(eventName, detail.properties); }
@@ -151,6 +218,11 @@
     events: EVENT_NAMES
   });
 
+  trackEvent(EVENT_NAMES.PAGE_VIEW, {}, { onceKey: EVENT_NAMES.PAGE_VIEW });
+  const resourceSlug = document.body?.dataset.resourceSlug || '';
+  if (resourceSlug) {
+    trackEvent(EVENT_NAMES.RESOURCE_VIEW, { resource_slug: resourceSlug }, { onceKey: EVENT_NAMES.RESOURCE_VIEW });
+  }
   observeSections();
   observeScrollDepth();
   loadCloudflareAnalytics();

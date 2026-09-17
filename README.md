@@ -47,3 +47,24 @@ KZ → WHO I AM → WHAT I'M DOING → MY DREAM → FROM 0 → 1 → RIGHT NOW /
 `tracking.js` 是統一追蹤入口。所有自訂事件都經過 `window.trackEvent(name, properties)`，並自動附上本次瀏覽保存的 `utm_source`、`utm_medium`、`utm_campaign`、`utm_content`。目前會記錄 Instagram／YouTube 點擊、0→1／RIGHT NOW／WHAT'S NEXT 觀看，以及 25／50／75／90% 捲動深度；同一次頁面瀏覽的觀看與捲動事件只送一次。
 
 Cloudflare Web Analytics 負責匿名的 Page Views、Visitors、來源、熱門頁面、裝置和地區資料，不接收自訂事件。若未來加入 GA、Plausible 或 PostHog，只需在 `config.js` 的 `trackEvent` adapter 串接，不必改各區塊。
+
+自訂事件會以非阻塞方式送往 `/api/events`，由 Cloudflare Pages Function 寫入 D1。事件資料只包含事件名稱、伺服器時間、頁面路徑、來源網域、裝置類型、UTM、必要的 Resource／位置／捲動欄位，以及只存在於瀏覽器分頁期間的隨機 Session ID。不儲存姓名、Email、完整 IP、精確位置或 Fingerprint。
+
+`/admin/` 是 Analytics Dashboard；原本的 Decap CMS 內容編輯器移至 `/admin/content/`。Dashboard 只顯示彙總資料，且 `/api/analytics` 會驗證 Cloudflare Access JWT。在 D1 與 Access 完成綁定前，API 會回傳明確的未設定訊息，不會顯示假資料。
+
+## Resources
+
+`/resources/` 是 Resources 索引。正式內容集中在 `content/resources.json`，未發布項目不會顯示。每篇網址使用 `/resources/{slug}/`，由 Pages Function 產生可索引 HTML、canonical、Open Graph 與 Article structured data。
+
+新增內容可由 `/admin/content/` 的「Resources」管理。Resource 支援標題、說明、slug、發布／更新日期、分類、段落、清單、實作區、下載、CTA 與 SEO 欄位。動態 sitemap 只列出 `published: true` 的內容。
+
+## Cloudflare 上線設定
+
+1. 建立 D1 database，名稱建議 `kz-analytics`。
+2. 對資料庫執行 `migrations/0001_analytics.sql`。
+3. 在 Pages 專案 `Settings > Bindings` 新增 D1 binding，變數名稱必須是 `ANALYTICS_DB`，Production 與 Preview 都要設定。
+4. 建立 Cloudflare Access Self-hosted application，保護 `kz-personal-website.pages.dev/admin/*` 與 `kz-personal-website.pages.dev/api/analytics*`。
+5. Pages 環境變數加入 `CF_ACCESS_TEAM_DOMAIN`（完整 `https://<team>.cloudflareaccess.com`）與 `CF_ACCESS_AUD`（Access Application Audience tag）。
+6. 重新部署。若任一安全設定缺少，Analytics Dashboard 只顯示設定錯誤，資料 API 不會開放。
+
+Cloudflare Web Analytics 與這套 D1 自訂事件系統用途不同：前者負責 Cloudflare 定義的 Visits、Page Views 和 Web Performance；後者負責 KZ 的互動、UTM、Resources 與 CTA。Dashboard 的 `Anonymous Sessions` 是分頁期間的隨機 Session 去重，不冒充 Cloudflare Visitors。
