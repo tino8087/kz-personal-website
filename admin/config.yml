@@ -1,0 +1,80 @@
+backend:
+  name: github
+  repo: tino8087/kz-personal-website
+  branch: main
+  base_url: YOUR_OAUTH_WORKER_URL
+
+local_backend: true
+locale: zh_Hant
+publish_mode: simple
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  - name: website
+    label: 網站內容
+    files:
+      - name: home
+        label: KZ 首頁
+        file: content/site.json
+        format: json
+        fields:
+          - label: 首頁
+            name: hero
+            widget: object
+            fields:
+              - { label: 首頁標語, name: tagline, widget: text, hint: 換行會保留 }
+          - label: 關於我
+            name: who
+            widget: object
+            fields:
+              - { label: 大標題, name: headline, widget: text }
+              - { label: 介紹內文, name: body, widget: text }
+          - label: 現在在做什麼
+            name: activities
+            widget: list
+            summary: '{{fields.label}} — {{fields.title}}'
+            fields:
+              - { label: 英文標籤, name: label, widget: string }
+              - { label: 標題, name: title, widget: string }
+              - { label: 說明, name: body, widget: text }
+          - label: RIGHT NOW
+            name: now
+            widget: object
+            fields:
+              - { label: 小標, name: subtitle, widget: string }
+              - { label: 日期, name: date, widget: string, hint: 例如 2026.09 }
+              - label: 最近正在做
+                name: items
+                widget: list
+                summary: '{{fields.title}} — {{fields.note}}'
+                fields:
+                  - { label: 項目, name: title, widget: string }
+                  - { label: 短註記, name: note, widget: string }
+          - label: WHAT'S NEXT
+            name: next
+            widget: object
+            fields:
+              - { label: 小標, name: subtitle, widget: string }
+              - { label: 下一步, name: items, widget: list, field: { label: 項目, name: item, widget: string } }
+          - label: 聯絡區
+            name: follow
+            widget: object
+            fields:
+              - { label: 大標題, name: headline, widget: text }
+          - label: 社群連結
+            name: social
+            widget: object
+            fields:
+              - { label: Instagram 完整網址, name: instagram, widget: string, required: false }
+              - { label: YouTube 完整網址, name: youtube, widget: string, required: false }
+          - label: 圖片與影片
+            name: media
+            widget: object
+            fields:
+              - { label: 生活照片, name: portrait, widget: image, required: false }
+              - { label: 生活照片說明, name: portrait_caption, widget: string }
+              - { label: Reels 影片, name: reel, widget: file, required: false }
+              - { label: Reels 封面, name: reel_poster, widget: image, required: false }
+              - { label: Reels 說明, name: reel_caption, widget: string }
+              - { label: HOCHI 草稿／過程照片, name: sketch, widget: image, required: false }
