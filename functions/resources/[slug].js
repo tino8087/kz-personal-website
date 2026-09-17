@@ -7,6 +7,9 @@ function sectionHtml(section) {
 }
 
 export async function onRequestGet({ request, env, params }) {
+  if (params.slug === 'resources.css' || params.slug === 'resources.js') {
+    return env.ASSETS.fetch(request);
+  }
   const resources = await loadResources(env, request);
   const item = resources.find(resource => resource.slug === params.slug);
   if (!item) return new Response('Resource not found.', { status: 404, headers: { 'Content-Type': 'text/plain; charset=UTF-8', 'X-Robots-Tag': 'noindex' } });
