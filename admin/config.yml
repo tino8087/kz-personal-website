@@ -79,3 +79,53 @@ collections:
               - { label: Reels 封面, name: reel_poster, widget: image, required: false }
               - { label: Reels 說明, name: reel_caption, widget: string }
               - { label: HOCHI 草稿／過程照片, name: sketch, widget: image, required: false }
+  - name: resources
+    label: Resources
+    files:
+      - name: resource_library
+        label: Resource 內容庫
+        file: content/resources.json
+        format: json
+        fields:
+          - label: Resources
+            name: resources
+            widget: list
+            summary: '{{fields.title}} — {{fields.slug}}'
+            fields:
+              - { label: 已發布, name: published, widget: boolean, default: false, hint: 開啟後才會出現在正式網站 }
+              - { label: 標題, name: title, widget: string }
+              - { label: 一句話說明, name: description, widget: text }
+              - { label: 網址代稱, name: slug, widget: string, pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', '只使用小寫英文、數字與連字號'] }
+              - { label: 發布日期, name: published_date, widget: datetime, format: YYYY-MM-DD, date_format: YYYY-MM-DD, time_format: false }
+              - { label: 更新日期, name: updated_date, widget: datetime, format: YYYY-MM-DD, date_format: YYYY-MM-DD, time_format: false, required: false }
+              - { label: 分類, name: category, widget: string, required: false }
+              - label: 主要內容
+                name: content
+                widget: list
+                fields:
+                  - { label: 小標題, name: heading, widget: string, required: false }
+                  - { label: 段落, name: paragraphs, widget: list, field: { label: 段落, name: paragraph, widget: text }, required: false }
+                  - { label: 清單, name: items, widget: list, field: { label: 項目, name: item, widget: string }, required: false }
+              - label: 實作區
+                name: practical
+                widget: object
+                required: false
+                fields:
+                  - { label: 標題, name: heading, widget: string, required: false }
+                  - { label: 項目, name: items, widget: list, field: { label: 項目, name: item, widget: text }, required: false }
+              - label: 下載
+                name: download
+                widget: object
+                required: false
+                fields:
+                  - { label: 按鈕文字, name: label, widget: string, required: false }
+                  - { label: 檔案網址, name: url, widget: file, required: false }
+              - label: 結尾 CTA
+                name: cta
+                widget: object
+                required: false
+                fields:
+                  - { label: 按鈕文字, name: label, widget: string, required: false }
+                  - { label: 連結, name: url, widget: string, required: false }
+              - { label: SEO 標題, name: seo_title, widget: string, required: false }
+              - { label: SEO 說明, name: seo_description, widget: text, required: false }

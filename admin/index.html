@@ -3,10 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>KZ 網站後台</title>
-  <style>body{margin:0;background:#F7F5F0}body::before{content:'KZ CONTENT';position:fixed;left:18px;bottom:14px;z-index:1;font:700 11px Arial;color:#171717}</style>
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>KZ Dashboard</title>
+  <link rel="stylesheet" href="/admin/dashboard.css">
 </head>
 <body>
-  <script src="https://unpkg.com/decap-cms@^3.8.0/dist/decap-cms.js"></script>
+  <header><a class="brand" href="/">KZ</a><nav><a href="/admin/content/">編輯網站內容</a><a href="/resources/">Resources</a></nav></header>
+  <main>
+    <div class="heading"><div><p class="eyebrow">PRIVATE DASHBOARD</p><h1>網站現在表現如何</h1></div><div class="period" role="group" aria-label="日期範圍"><button data-days="1">Today</button><button data-days="7" class="active">7 Days</button><button data-days="30">30 Days</button><button data-days="all">All Time</button></div></div>
+    <div id="status" class="status" role="status">讀取資料中…</div>
+    <div id="dashboard" hidden>
+      <section class="overview" aria-labelledby="overview-title"><h2 id="overview-title">Overview</h2><div class="headline-numbers"><div><strong id="sessions">0</strong><span>Anonymous Sessions</span></div><div><strong id="page-views">0</strong><span>Page Views</span></div></div><div class="trend"><h3>Traffic Trend</h3><div id="trend"></div></div></section>
+      <section><h2>Traffic</h2><div class="columns"><div><h3>Top Pages</h3><div id="top-pages" class="list"></div></div><div><h3>Traffic Sources</h3><div id="sources" class="list"></div></div><div><h3>UTM Campaign</h3><div id="campaigns" class="list"></div></div><div><h3>Device</h3><div id="devices" class="list"></div></div></div></section>
+      <section><h2>Content Engagement</h2><div id="engagement" class="metrics"></div></section>
+      <section><h2>Actions</h2><div id="actions" class="metrics"></div></section>
+      <section><h2>Resources</h2><div id="resources" class="list"></div></section>
+      <p class="updated" id="updated"></p>
+    </div>
+  </main>
+  <script src="/admin/dashboard.js" defer></script>
 </body>
 </html>
