@@ -3,7 +3,7 @@ window.KZ_CONFIG = {
   social: { instagram: '', youtube: '' }, // Full HTTPS profile/channel URLs.
   cloudflareToken: '', // Leave empty if Pages automatically injects Web Analytics.
   debugAnalytics: false,
-  // Optional adapter: connect an installed event provider here.
+  // Optional event adapter. Every custom event and its UTM context passes here.
   // trackEvent(name, properties) { window.plausible?.(name, { props: properties }); }
   trackEvent: null
 };

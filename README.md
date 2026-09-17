@@ -41,3 +41,9 @@ KZ → WHO I AM → WHAT I'M DOING → MY DREAM → FROM 0 → 1 → RIGHT NOW /
 後台的 Instagram、YouTube 欄位請填入完整 HTTPS 個人頁或頻道網址。未設定時會顯示「連結待補」，點擊提供提示，不會導向虛構帳號。
 
 日期及近況文字在 index.html 的 now 區更新。網站不會自動將日期更新成當月，以免把舊近況誤呈現為新資訊。
+
+## Analytics
+
+`tracking.js` 是統一追蹤入口。所有自訂事件都經過 `window.trackEvent(name, properties)`，並自動附上本次瀏覽保存的 `utm_source`、`utm_medium`、`utm_campaign`、`utm_content`。目前會記錄 Instagram／YouTube 點擊、0→1／RIGHT NOW／WHAT'S NEXT 觀看，以及 25／50／75／90% 捲動深度；同一次頁面瀏覽的觀看與捲動事件只送一次。
+
+Cloudflare Web Analytics 負責匿名的 Page Views、Visitors、來源、熱門頁面、裝置和地區資料，不接收自訂事件。若未來加入 GA、Plausible 或 PostHog，只需在 `config.js` 的 `trackEvent` adapter 串接，不必改各區塊。

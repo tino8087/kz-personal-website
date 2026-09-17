@@ -14,16 +14,10 @@
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     document.documentElement.classList.add('motion');
   }
-  // A public, provider-neutral hook. Cloudflare Web Analytics does NOT store custom events.
-  function track(name, properties = {}) {
-    const detail = { name, properties, timestamp: new Date().toISOString() };
-    window.dispatchEvent(new CustomEvent('kz:analytics', { detail }));
-    if (config.debugAnalytics) console.info('[KZ analytics]', detail);
-    if (typeof config.trackEvent === 'function') {
-      try { config.trackEvent(name, properties); } catch (error) { if (config.debugAnalytics) console.warn(error); }
-    }
-  }
-  window.KZAnalytics = Object.freeze({ track });
+  const track = (name, properties = {}, options = {}) => {
+    try { return window.trackEvent?.(name, properties, options) ?? false; }
+    catch (_) { return false; }
+  };
   let toastTimer;
   const hosts = { instagram: ['instagram.com', 'www.instagram.com'], youtube: ['youtube.com', 'www.youtube.com', 'm.youtube.com', 'youtu.be'] };
   document.querySelectorAll('[data-social]').forEach(link => {
@@ -47,20 +41,10 @@
         const toast = document.getElementById('toast'); toast.textContent = `${platform === 'instagram' ? 'Instagram' : 'YouTube'} 連結尚待設定。`; toast.classList.add('show');
         clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 3500); return;
       }
-      track('social_click', { platform, placement: link.dataset.placement, destination: url });
+      track(`${platform}_click`, { platform, placement: link.dataset.placement, destination_host: new URL(url).hostname });
     });
   });
   if ([...document.querySelectorAll('[data-social]')].every(el => el.target === '_blank')) document.getElementById('social-placeholder').hidden = true;
-  if ('IntersectionObserver' in window) {
-    const sections = new IntersectionObserver(entries => entries.forEach(entry => {
-      if (entry.isIntersecting) { track('section_view', { section: entry.target.dataset.trackSection }); sections.unobserve(entry.target); }
-    }), { threshold: 0.25 });
-    document.querySelectorAll('[data-track-section]').forEach(el => sections.observe(el));
-  }
-  if (/^[a-f0-9]{32}$/i.test(config.cloudflareToken || '')) {
-    const script = document.createElement('script'); script.type = 'module'; script.defer = true; script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
-    script.dataset.cfBeacon = JSON.stringify({ token: config.cloudflareToken }); document.head.appendChild(script);
-  }
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 })();
