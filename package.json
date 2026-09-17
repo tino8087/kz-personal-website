@@ -1,0 +1,11 @@
+{
+  "name": "kz-personal-website-v3",
+  "private": true,
+  "scripts": {
+    "site": "python3 -m http.server 8033 --bind 127.0.0.1",
+    "cms": "decap-server"
+  },
+  "devDependencies": {
+    "decap-server": "^3.3.1"
+  }
+}
