@@ -1,0 +1,19 @@
+{
+  "hero": { "tagline": "用生活累積體驗，\n用創作表達。" },
+  "who": { "headline": "我是 KZ，\n一個喜歡體驗生活，\n也喜歡創作的人。", "body": "我對很多事情都很好奇。遇到真的感興趣的事，我喜歡自己去理解、去試，也喜歡親自體驗看看。" },
+  "activities": [
+    { "label": "CONTENT", "title": "把生活留下來。", "body": "拍 Reels，把生活裡真的發生過的事情，變成影像和內容。" },
+    { "label": "HOCHI", "title": "從一個角色開始。", "body": "正在從零學習角色設計，嘗試做一個屬於自己的角色 IP。" },
+    { "label": "EXPERIENCE", "title": "繼續去試。", "body": "去沒去過的地方，做沒做過的事。讓下一個想法，從生活裡發生。" }
+  ],
+  "now": { "subtitle": "不是完成式，是現在進行式。", "date": "2026.09", "items": [
+    { "title": "拍 Reels", "note": "持續創作" },
+    { "title": "學習角色 IP", "note": "從零練習" },
+    { "title": "製作個人網站", "note": "V3 進行中" },
+    { "title": "準備更多長內容", "note": "慢慢累積" }
+  ]},
+  "next": { "subtitle": "先透露一點點。", "items": ["角色 IP 第一版", "第一次實體化", "第一個產品"] },
+  "follow": { "headline": "接下來的故事，\n也在這裡。" },
+  "social": { "instagram": "", "youtube": "" },
+  "media": { "portrait": "", "portrait_caption": "從生活開始認識我。", "reel": "", "reel_poster": "", "reel_caption": "一些生活，一些正在發生的事。", "sketch": "" }
+}
