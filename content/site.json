@@ -14,6 +14,9 @@
   ]},
   "next": { "subtitle": "先透露一點點。", "items": ["角色 IP 第一版", "第一次實體化", "第一個產品"] },
   "follow": { "headline": "接下來的故事，\n也在這裡。" },
-  "social": { "instagram": "", "youtube": "" },
+  "social": {
+    "instagram": "https://www.instagram.com/hi.imkz/",
+    "youtube": "https://www.youtube.com/@hi_imkz"
+  },
   "media": { "portrait": "", "portrait_caption": "從生活開始認識我。", "reel": "", "reel_poster": "", "reel_caption": "一些生活，一些正在發生的事。", "sketch": "" }
 }
