@@ -25,223 +25,247 @@ collections:
           - label: 網站基本資料
             name: site
             widget: object
+            required: false
             collapsed: true
             fields:
-              - { label: 瀏覽器標題, name: title, widget: string }
-              - { label: 搜尋說明, name: description, widget: text }
-              - { label: 手機瀏覽器主題色, name: theme_color, widget: color }
+              - { label: 瀏覽器標題, name: title, widget: string, required: false }
+              - { label: 搜尋說明, name: description, widget: text, required: false }
+              - { label: 手機瀏覽器主題色, name: theme_color, widget: color, required: false }
           - label: 網站配色
             name: theme
             widget: object
+            required: false
             collapsed: true
             hint: 修改後會套用到電腦版與手機版，請保留足夠的文字對比。
             fields:
-              - { label: 主橘色, name: orange, widget: color }
-              - { label: 主黑色, name: black, widget: color }
-              - { label: 米白色, name: cream, widget: color }
+              - { label: 主橘色, name: orange, widget: color, required: false }
+              - { label: 主黑色, name: black, widget: color, required: false }
+              - { label: 米白色, name: cream, widget: color, required: false }
           - label: 最上方導覽列
             name: navigation
             widget: object
+            required: false
             fields:
               - { label: IP 角色 Logo, name: logo, widget: image, required: false, hint: 留白會顯示目前的圓形占位圖案。 }
-              - { label: Logo 圖片說明, name: logo_alt, widget: string }
-              - { label: 關於我, name: about_label, widget: string }
-              - { label: 我在做什麼, name: creation_label, widget: string }
-              - { label: 哪裡找到我？, name: links_label, widget: string }
-              - { label: FOLLOW ME, name: follow_label, widget: string }
-              - { label: FOLLOW ME 連結, name: follow_url, widget: string }
+              - { label: Logo 圖片說明, name: logo_alt, widget: string, required: false }
+              - { label: 關於我, name: about_label, widget: string, required: false }
+              - { label: 我在做什麼, name: creation_label, widget: string, required: false }
+              - { label: 哪裡找到我？, name: links_label, widget: string, required: false }
+              - { label: FOLLOW ME, name: follow_label, widget: string, required: false }
+              - { label: FOLLOW ME 連結, name: follow_url, widget: string, required: false }
           - label: 首頁開場
             name: hero
             widget: object
+            required: false
             fields:
-              - { label: 小標, name: eyebrow, widget: string }
-              - { label: 自我介紹, name: intro, widget: string }
-              - { label: 核心大標, name: headline, widget: text, hint: 換行會保留。 }
-              - { label: 影片下方說明, name: summary, widget: text }
-              - { label: 向下提示, name: scroll_label, widget: string }
-              - { label: 影片左上標籤, name: video_label, widget: string }
-              - { label: 尚未上傳時的文字, name: video_placeholder, widget: string }
-              - { label: 開啟聲音文字, name: sound_on_label, widget: string }
-              - { label: 關閉聲音文字, name: sound_off_label, widget: string }
+              - { label: 小標, name: eyebrow, widget: string, required: false }
+              - { label: 自我介紹, name: intro, widget: string, required: false }
+              - { label: 核心大標, name: headline, widget: text, hint: 換行會保留。, required: false }
+              - { label: 影片下方說明, name: summary, widget: text, required: false }
+              - { label: 向下提示, name: scroll_label, widget: string, required: false }
+              - { label: 影片左上標籤, name: video_label, widget: string, required: false }
+              - { label: 尚未上傳時的文字, name: video_placeholder, widget: string, required: false }
+              - { label: 開啟聲音文字, name: sound_on_label, widget: string, required: false }
+              - { label: 關閉聲音文字, name: sound_off_label, widget: string, required: false }
               - label: 開場影片
                 name: media
                 widget: object
+                required: false
                 fields:
-                  - { label: 素材類型, name: type, widget: select, options: [{ label: 影片, value: video }, { label: 圖片, value: image }] }
+                  - { label: 素材類型, name: type, widget: select, options: [{ label: 影片, value: video }, { label: 圖片, value: image }], required: false }
                   - { label: 上傳影片或圖片, name: src, widget: file, required: false }
                   - { label: 影片封面, name: poster, widget: image, required: false }
-                  - { label: 素材說明, name: alt, widget: string }
+                  - { label: 素材說明, name: alt, widget: string, required: false }
           - label: 關於我
             name: about
             widget: object
+            required: false
             fields:
-              - { label: 區塊小標, name: label, widget: string }
-              - { label: 大標題, name: headline, widget: text, hint: 換行會保留。 }
-              - { label: 自我介紹, name: body, widget: text }
-              - { label: 夢想小標, name: dream_label, widget: string }
-              - { label: 夢想內容, name: dream, widget: text }
-              - { label: 照片角落標籤, name: media_label, widget: string }
+              - { label: 區塊小標, name: label, widget: string, required: false }
+              - { label: 大標題, name: headline, widget: text, hint: 換行會保留。, required: false }
+              - { label: 自我介紹, name: body, widget: text, required: false }
+              - { label: 夢想小標, name: dream_label, widget: string, required: false }
+              - { label: 夢想內容, name: dream, widget: text, required: false }
+              - { label: 照片角落標籤, name: media_label, widget: string, required: false }
               - label: 人物／生活照片
                 name: media
                 widget: object
+                required: false
                 fields:
-                  - { label: 素材類型, name: type, widget: select, options: [{ label: 圖片, value: image }, { label: 影片, value: video }] }
+                  - { label: 素材類型, name: type, widget: select, options: [{ label: 圖片, value: image }, { label: 影片, value: video }], required: false }
                   - { label: 上傳照片或影片, name: src, widget: file, required: false }
                   - { label: 影片封面, name: poster, widget: image, required: false }
-                  - { label: 素材說明, name: alt, widget: string }
+                  - { label: 素材說明, name: alt, widget: string, required: false }
           - label: 主要創作
             name: creation
             widget: object
+            required: false
             fields:
-              - { label: 區塊小標, name: label, widget: string }
-              - { label: 捲動提示, name: scroll_label, widget: string }
+              - { label: 區塊小標, name: label, widget: string, required: false }
+              - { label: 捲動提示, name: scroll_label, widget: string, required: false }
               - label: 內容創作
                 name: content
                 widget: object
+                required: false
                 fields:
-                  - { label: 編號, name: number, widget: string }
-                  - { label: 下方進度名稱, name: tab_label, widget: string }
-                  - { label: 標題, name: title, widget: string }
-                  - { label: 說明, name: description, widget: text }
-                  - { label: 點擊提示, name: detail_label, widget: string }
-                  - { label: 點擊後前往網址, name: url, widget: string }
-                  - { label: 占位主文字, name: word_one, widget: string }
-                  - { label: 占位副文字, name: word_two, widget: string }
-                  - { label: 卡片按鈕文字, name: footer_label, widget: string }
-                  - { label: 卡片右下文字, name: footer_meta, widget: string }
+                  - { label: 編號, name: number, widget: string, required: false }
+                  - { label: 下方進度名稱, name: tab_label, widget: string, required: false }
+                  - { label: 標題, name: title, widget: string, required: false }
+                  - { label: 說明, name: description, widget: text, required: false }
+                  - { label: 點擊提示, name: detail_label, widget: string, required: false }
+                  - { label: 點擊後前往網址, name: url, widget: string, required: false }
+                  - { label: 占位主文字, name: word_one, widget: string, required: false }
+                  - { label: 占位副文字, name: word_two, widget: string, required: false }
+                  - { label: 卡片按鈕文字, name: footer_label, widget: string, required: false }
+                  - { label: 卡片右下文字, name: footer_meta, widget: string, required: false }
                   - label: 卡片照片／影片
                     name: media
                     widget: object
+                    required: false
                     fields:
-                      - { label: 素材類型, name: type, widget: select, options: [{ label: 圖片, value: image }, { label: 影片, value: video }] }
+                      - { label: 素材類型, name: type, widget: select, options: [{ label: 圖片, value: image }, { label: 影片, value: video }], required: false }
                       - { label: 上傳照片或影片, name: src, widget: file, required: false }
                       - { label: 影片封面, name: poster, widget: image, required: false }
-                      - { label: 素材說明, name: alt, widget: string }
+                      - { label: 素材說明, name: alt, widget: string, required: false }
               - label: IP 角色
                 name: ip
                 widget: object
+                required: false
                 fields:
-                  - { label: 編號, name: number, widget: string }
-                  - { label: 下方進度名稱, name: tab_label, widget: string }
-                  - { label: 標題, name: title, widget: string }
-                  - { label: 說明, name: description, widget: text }
-                  - { label: 點擊提示, name: detail_label, widget: string }
-                  - { label: 點擊後前往網址, name: url, widget: string }
-                  - { label: 占位主文字, name: word_one, widget: string }
-                  - { label: 占位副文字, name: word_two, widget: string }
-                  - { label: 卡片按鈕文字, name: footer_label, widget: string }
-                  - { label: 卡片右下文字, name: footer_meta, widget: string }
+                  - { label: 編號, name: number, widget: string, required: false }
+                  - { label: 下方進度名稱, name: tab_label, widget: string, required: false }
+                  - { label: 標題, name: title, widget: string, required: false }
+                  - { label: 說明, name: description, widget: text, required: false }
+                  - { label: 點擊提示, name: detail_label, widget: string, required: false }
+                  - { label: 點擊後前往網址, name: url, widget: string, required: false }
+                  - { label: 占位主文字, name: word_one, widget: string, required: false }
+                  - { label: 占位副文字, name: word_two, widget: string, required: false }
+                  - { label: 卡片按鈕文字, name: footer_label, widget: string, required: false }
+                  - { label: 卡片右下文字, name: footer_meta, widget: string, required: false }
                   - label: 卡片照片／影片
                     name: media
                     widget: object
+                    required: false
                     fields:
-                      - { label: 素材類型, name: type, widget: select, options: [{ label: 圖片, value: image }, { label: 影片, value: video }] }
+                      - { label: 素材類型, name: type, widget: select, options: [{ label: 圖片, value: image }, { label: 影片, value: video }], required: false }
                       - { label: 上傳照片或影片, name: src, widget: file, required: false }
                       - { label: 影片封面, name: poster, widget: image, required: false }
-                      - { label: 素材說明, name: alt, widget: string }
+                      - { label: 素材說明, name: alt, widget: string, required: false }
               - label: 穿搭日記
                 name: outfit
                 widget: object
+                required: false
                 fields:
-                  - { label: 編號, name: number, widget: string }
-                  - { label: 下方進度名稱, name: tab_label, widget: string }
-                  - { label: 標題, name: title, widget: string }
-                  - { label: 說明, name: description, widget: text }
-                  - { label: 點擊提示, name: detail_label, widget: string }
-                  - { label: 點擊後前往網址, name: url, widget: string }
-                  - { label: 占位主文字, name: word_one, widget: string }
-                  - { label: 占位副文字, name: word_two, widget: string }
-                  - { label: 卡片按鈕文字, name: footer_label, widget: string }
-                  - { label: 卡片右下文字, name: footer_meta, widget: string }
+                  - { label: 編號, name: number, widget: string, required: false }
+                  - { label: 下方進度名稱, name: tab_label, widget: string, required: false }
+                  - { label: 標題, name: title, widget: string, required: false }
+                  - { label: 說明, name: description, widget: text, required: false }
+                  - { label: 點擊提示, name: detail_label, widget: string, required: false }
+                  - { label: 點擊後前往網址, name: url, widget: string, required: false }
+                  - { label: 占位主文字, name: word_one, widget: string, required: false }
+                  - { label: 占位副文字, name: word_two, widget: string, required: false }
+                  - { label: 卡片按鈕文字, name: footer_label, widget: string, required: false }
+                  - { label: 卡片右下文字, name: footer_meta, widget: string, required: false }
                   - label: 卡片照片／影片
                     name: media
                     widget: object
+                    required: false
                     fields:
-                      - { label: 素材類型, name: type, widget: select, options: [{ label: 圖片, value: image }, { label: 影片, value: video }] }
+                      - { label: 素材類型, name: type, widget: select, options: [{ label: 圖片, value: image }, { label: 影片, value: video }], required: false }
                       - { label: 上傳照片或影片, name: src, widget: file, required: false }
                       - { label: 影片封面, name: poster, widget: image, required: false }
-                      - { label: 素材說明, name: alt, widget: string }
+                      - { label: 素材說明, name: alt, widget: string, required: false }
           - label: 最近也在學
             name: life
             widget: object
+            required: false
             fields:
-              - { label: 區塊小標, name: label, widget: string }
-              - { label: 大標題, name: headline, widget: text, hint: 換行會保留。 }
+              - { label: 區塊小標, name: label, widget: string, required: false }
+              - { label: 大標題, name: headline, widget: text, hint: 換行會保留。, required: false }
               - label: DJ 新手
                 name: dj
                 widget: object
+                required: false
                 fields:
-                  - { label: 影像占位文字, name: media_word, widget: string }
-                  - { label: 標題, name: title, widget: string }
-                  - { label: 說明, name: note, widget: text }
-                  - { label: 影像角落標籤, name: media_label, widget: string }
+                  - { label: 影像占位文字, name: media_word, widget: string, required: false }
+                  - { label: 標題, name: title, widget: string, required: false }
+                  - { label: 說明, name: note, widget: text, required: false }
+                  - { label: 影像角落標籤, name: media_label, widget: string, required: false }
                   - label: 照片／影片
                     name: media
                     widget: object
+                    required: false
                     fields:
-                      - { label: 素材類型, name: type, widget: select, options: [{ label: 圖片, value: image }, { label: 影片, value: video }] }
+                      - { label: 素材類型, name: type, widget: select, options: [{ label: 圖片, value: image }, { label: 影片, value: video }], required: false }
                       - { label: 上傳照片或影片, name: src, widget: file, required: false }
                       - { label: 影片封面, name: poster, widget: image, required: false }
-                      - { label: 素材說明, name: alt, widget: string }
+                      - { label: 素材說明, name: alt, widget: string, required: false }
               - label: 網球
                 name: tennis
                 widget: object
+                required: false
                 fields:
-                  - { label: 影像占位文字, name: media_word, widget: string }
-                  - { label: 標題, name: title, widget: string }
-                  - { label: 說明, name: note, widget: text }
-                  - { label: 影像角落標籤, name: media_label, widget: string }
+                  - { label: 影像占位文字, name: media_word, widget: string, required: false }
+                  - { label: 標題, name: title, widget: string, required: false }
+                  - { label: 說明, name: note, widget: text, required: false }
+                  - { label: 影像角落標籤, name: media_label, widget: string, required: false }
                   - label: 照片／影片
                     name: media
                     widget: object
+                    required: false
                     fields:
-                      - { label: 素材類型, name: type, widget: select, options: [{ label: 圖片, value: image }, { label: 影片, value: video }] }
+                      - { label: 素材類型, name: type, widget: select, options: [{ label: 圖片, value: image }, { label: 影片, value: video }], required: false }
                       - { label: 上傳照片或影片, name: src, widget: file, required: false }
                       - { label: 影片封面, name: poster, widget: image, required: false }
-                      - { label: 素材說明, name: alt, widget: string }
+                      - { label: 素材說明, name: alt, widget: string, required: false }
           - label: 哪裡找到我？
             name: links
             widget: object
+            required: false
             fields:
-              - { label: 區塊小標, name: label, widget: string }
+              - { label: 區塊小標, name: label, widget: string, required: false }
               - label: Instagram
                 name: instagram
                 widget: object
+                required: false
                 fields:
-                  - { label: 顯示名稱, name: label, widget: string }
-                  - { label: 一句說明, name: description, widget: string }
-                  - { label: 完整網址, name: url, widget: string }
+                  - { label: 顯示名稱, name: label, widget: string, required: false }
+                  - { label: 一句說明, name: description, widget: string, required: false }
+                  - { label: 完整網址, name: url, widget: string, required: false }
               - label: YouTube
                 name: youtube
                 widget: object
+                required: false
                 fields:
-                  - { label: 顯示名稱, name: label, widget: string }
-                  - { label: 一句說明, name: description, widget: string }
-                  - { label: 完整網址, name: url, widget: string }
+                  - { label: 顯示名稱, name: label, widget: string, required: false }
+                  - { label: 一句說明, name: description, widget: string, required: false }
+                  - { label: 完整網址, name: url, widget: string, required: false }
               - label: Gmail
                 name: gmail
                 widget: object
+                required: false
                 fields:
-                  - { label: 顯示名稱, name: label, widget: string }
-                  - { label: 一句說明, name: description, widget: string }
-                  - { label: Email 連結, name: url, widget: string, hint: "需保留 mailto: 開頭。" }
-              - { label: 頁尾版權文字, name: copyright, widget: string }
-              - { label: 回到最上面文字, name: back_label, widget: string }
+                  - { label: 顯示名稱, name: label, widget: string, required: false }
+                  - { label: 一句說明, name: description, widget: string, required: false }
+                  - { label: Email 連結, name: url, widget: string, hint: "需保留 mailto: 開頭。", required: false }
+              - { label: 頁尾版權文字, name: copyright, widget: string, required: false }
+              - { label: 回到最上面文字, name: back_label, widget: string, required: false }
           - label: 內容筆記首頁
             name: notes
             widget: object
+            required: false
             fields:
-              - { label: 導覽列名稱, name: nav_title, widget: string }
-              - { label: 回首頁文字, name: back_label, widget: string }
-              - { label: 小標, name: eyebrow, widget: string }
-              - { label: 大標題, name: headline, widget: text, hint: 換行會保留。 }
-              - { label: 介紹文字, name: intro, widget: text }
-              - { label: 文章區標題, name: list_title, widget: string }
-              - { label: 更新狀態, name: list_status, widget: string }
-              - { label: 文章按鈕文字, name: read_label, widget: string }
-              - { label: 沒有文章時的標題, name: empty_title, widget: string }
-              - { label: 沒有文章時的說明, name: empty_text, widget: text }
-              - { label: 頁尾版權文字, name: footer_copyright, widget: string }
+              - { label: 導覽列名稱, name: nav_title, widget: string, required: false }
+              - { label: 回首頁文字, name: back_label, widget: string, required: false }
+              - { label: 小標, name: eyebrow, widget: string, required: false }
+              - { label: 大標題, name: headline, widget: text, hint: 換行會保留。, required: false }
+              - { label: 介紹文字, name: intro, widget: text, required: false }
+              - { label: 文章區標題, name: list_title, widget: string, required: false }
+              - { label: 更新狀態, name: list_status, widget: string, required: false }
+              - { label: 文章按鈕文字, name: read_label, widget: string, required: false }
+              - { label: 沒有文章時的標題, name: empty_title, widget: string, required: false }
+              - { label: 沒有文章時的說明, name: empty_text, widget: text, required: false }
+              - { label: 頁尾版權文字, name: footer_copyright, widget: string, required: false }
   - name: resources
     label: 文章與下載內容
     files:
