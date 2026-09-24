@@ -1,0 +1,171 @@
+{
+  "site": {
+    "title": "KZ — 用生活累積體驗，用創作把它留下來",
+    "description": "KZ 的個人網站：內容創作、角色 IP、穿搭日記，以及正在學習的生活。",
+    "theme_color": "#f2674a"
+  },
+  "theme": {
+    "orange": "#f2674a",
+    "black": "#15130f",
+    "cream": "#f5e8d0"
+  },
+  "navigation": {
+    "logo": "",
+    "logo_alt": "KZ 角色 Logo",
+    "about_label": "關於我",
+    "creation_label": "我在做什麼",
+    "links_label": "哪裡找到我？",
+    "follow_label": "FOLLOW ME",
+    "follow_url": "https://www.instagram.com/hi.imkz/"
+  },
+  "hero": {
+    "eyebrow": "KZ / OPENING FILM",
+    "intro": "嗨，我是 KZ。",
+    "headline": "用生活累積體驗，\n用創作把它留下來。",
+    "summary": "Reels、HOCHI、生活與正在學習的事。",
+    "scroll_label": "往下看",
+    "video_label": "OPENING VIDEO",
+    "video_placeholder": "影片位置",
+    "sound_on_label": "聲音 ON",
+    "sound_off_label": "聲音 OFF",
+    "media": {
+      "type": "video",
+      "src": "",
+      "poster": "",
+      "alt": "KZ 首頁開場影片"
+    }
+  },
+  "about": {
+    "label": "關於我",
+    "headline": "我對很多事情\n都很好奇。",
+    "body": "遇到真的感興趣的事，我喜歡自己去理解、去試，也喜歡親自體驗看看。生活裡發生的事情，最後常常會變成一支影片、一個想法，或下一個想做的東西。",
+    "dream_label": "我的夢想",
+    "dream": "把原本只有自己看得到的想法，真正帶到這個世界上。",
+    "media_label": "PORTRAIT / LIFE",
+    "media": {
+      "type": "image",
+      "src": "",
+      "poster": "",
+      "alt": "KZ 人物與生活照片"
+    }
+  },
+  "creation": {
+    "label": "我在做什麼 / 主要創作",
+    "scroll_label": "SCROLL",
+    "content": {
+      "number": "01",
+      "tab_label": "01 內容創作",
+      "title": "內容創作",
+      "description": "把生活裡真的發生過的事情，變成 Reels、YouTube 與影像故事。",
+      "detail_label": "看文章與完整內容 ↗",
+      "url": "notes.html",
+      "word_one": "REELS",
+      "word_two": "YOUTUBE",
+      "footer_label": "看文章",
+      "footer_meta": "LIFE → STORY",
+      "media": {
+        "type": "image",
+        "src": "",
+        "poster": "",
+        "alt": "內容創作封面"
+      }
+    },
+    "ip": {
+      "number": "02",
+      "tab_label": "02 IP 角色",
+      "title": "IP 角色",
+      "description": "從 HOCHI 開始，把一個想法一步一步做成真正存在的東西。",
+      "detail_label": "HOCHI / FROM 0 → 1 ↗",
+      "url": "",
+      "word_one": "HOCHI",
+      "word_two": "0→1",
+      "footer_label": "看過程 ↗",
+      "footer_meta": "IDEA → REAL",
+      "media": {
+        "type": "image",
+        "src": "",
+        "poster": "",
+        "alt": "HOCHI 角色草稿"
+      }
+    },
+    "outfit": {
+      "number": "03",
+      "tab_label": "03 穿搭日記",
+      "title": "穿搭日記",
+      "description": "記錄每天怎麼穿、喜歡的單品，還有生活裡慢慢形成的個人風格。",
+      "detail_label": "OUTFIT / DAILY NOTES ↗",
+      "url": "",
+      "word_one": "OUTFIT",
+      "word_two": "DAILY",
+      "footer_label": "看日記 ↗",
+      "footer_meta": "WEAR → REMEMBER",
+      "media": {
+        "type": "image",
+        "src": "",
+        "poster": "",
+        "alt": "穿搭日記封面"
+      }
+    }
+  },
+  "life": {
+    "label": "我在做什麼 / 最近也在學",
+    "headline": "生活裡，還有很多\n想學會的事。",
+    "dj": {
+      "media_word": "DJ",
+      "title": "DJ 新手",
+      "note": "正在從零開始學。",
+      "media_label": "MUSIC / LEARNING",
+      "media": {
+        "type": "image",
+        "src": "",
+        "poster": "",
+        "alt": "KZ 學習 DJ 的照片"
+      }
+    },
+    "tennis": {
+      "media_word": "TENNIS",
+      "title": "網球",
+      "note": "持續練習，也享受進步。",
+      "media_label": "PRACTICE / PLAY",
+      "media": {
+        "type": "image",
+        "src": "",
+        "poster": "",
+        "alt": "KZ 打網球的照片"
+      }
+    }
+  },
+  "links": {
+    "label": "哪裡找到我？",
+    "instagram": {
+      "label": "Instagram",
+      "description": "生活、Reels、最近的我",
+      "url": "https://www.instagram.com/hi.imkz/"
+    },
+    "youtube": {
+      "label": "YouTube",
+      "description": "更完整的故事與影像",
+      "url": "https://www.youtube.com/@hi_imkz"
+    },
+    "gmail": {
+      "label": "Gmail",
+      "description": "合作與聯絡",
+      "url": "mailto:tino8087@gmail.com"
+    },
+    "copyright": "© 2026 KZ",
+    "back_label": "回到最上面"
+  },
+  "notes": {
+    "nav_title": "內容筆記",
+    "back_label": "回首頁",
+    "eyebrow": "KZ / NOTES",
+    "headline": "從一支影片開始，\n把值得留下的內容整理在這裡。",
+    "intro": "Reels 裡沒有講完的想法、留言後想提供給你的內容，以及我正在學習和實際體驗的紀錄，都會慢慢放進來。",
+    "list_title": "最新內容",
+    "list_status": "持續更新",
+    "read_label": "閱讀內容",
+    "empty_title": "第一篇內容準備中",
+    "empty_text": "之後從 Instagram 留言取得的文章，都可以在這裡重新找到。",
+    "footer_copyright": "© 2026 KZ"
+  }
+}
