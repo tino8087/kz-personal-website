@@ -1,6 +1,16 @@
 (function () {
   "use strict";
 
+  function applyColorVersion(siteContent) {
+    var version = siteContent && siteContent.theme && siteContent.theme.version === "kz_brand"
+      ? "kz-brand"
+      : "original";
+    document.documentElement.setAttribute("data-color-version", version);
+
+    var themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor) themeColor.content = version === "kz-brand" ? "#8c9dad" : "#f2674a";
+  }
+
   function makeElement(tag, className, text) {
     var element = document.createElement(tag);
     if (className) element.className = className;
@@ -62,6 +72,7 @@
       return response.ok ? response.json() : {};
     }).catch(function () { return {}; })
   ]).then(function (results) {
+    applyColorVersion(results[1]);
     render(results[0].resources || [], results[1].notes && results[1].notes.read_label);
   }).catch(function (error) {
     console.warn("KZ notes could not be loaded. The empty state remains visible.", error);
