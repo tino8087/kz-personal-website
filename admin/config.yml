@@ -31,24 +31,6 @@ collections:
               - { label: 瀏覽器標題, name: title, widget: string, required: false }
               - { label: 搜尋說明, name: description, widget: text, required: false }
               - { label: 手機瀏覽器主題色, name: theme_color, widget: hidden, default: "#f2674a", required: false }
-          - label: 網站配色
-            name: theme
-            widget: object
-            required: false
-            collapsed: false
-            hint: 選擇後發布，前台整站會套用對應配色；隨時可以切回 Original。
-            fields:
-              - label: 配色版本
-                name: version
-                widget: select
-                required: false
-                default: original
-                options:
-                  - { label: "Version 1｜Original", value: original }
-                  - { label: "Version 2｜KZ Brand", value: kz_brand }
-              - { label: Original 主色, name: orange, widget: hidden, default: "#f2674a", required: false }
-              - { label: Original 深色, name: black, widget: hidden, default: "#15130f", required: false }
-              - { label: Original 淺色, name: cream, widget: hidden, default: "#f5e8d0", required: false }
           - label: 最上方導覽列
             name: navigation
             widget: object
