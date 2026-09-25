@@ -84,11 +84,11 @@
   },
   "life": {
     "label": "我在做什麼 / 最近也在學",
-    "headline": "生活裡，還有很多\n想學會的事。",
+    "headline": "最近，還有很多想要學的東西",
     "dj": {
       "media_word": "DJ",
       "title": "DJ 新手",
-      "note": "正在從零開始學。",
+      "note": "近期開始接觸 DJ，還在摸索，也玩得很開心。",
       "media_label": "MUSIC / LEARNING",
       "media": {
         "type": "image",
@@ -100,7 +100,7 @@
     "tennis": {
       "media_word": "TENNIS",
       "title": "網球",
-      "note": "持續練習，也享受進步。",
+      "note": "有空就會去打，也很喜歡自己越打越順的感覺。",
       "media_label": "PRACTICE / PLAY",
       "media": {
         "type": "image",
@@ -134,8 +134,8 @@
     "ip": {
       "media": {
         "type": "image",
-        "src": "/assets/uploads/6d1b0c85-36fa-4e42-9fc8-72c93c99f0d3.png",
-        "poster": "/assets/uploads/6d1b0c85-36fa-4e42-9fc8-72c93c99f0d3.png",
+        "src": "",
+        "poster": "",
         "alt": "HOCHI 角色草稿"
       },
       "detail_label": "看看過程 ↗",
@@ -157,15 +157,15 @@
         "alt": "穿搭日記封面"
       },
       "detail_label": "OUTFIT / DAILY NOTES ↗",
-      "footer_meta": "WEAR → REMEMBER",
+      "footer_meta": "WEAR → EXPRESS",
       "number": "03",
       "tab_label": "03 穿搭日記",
       "url": "",
-      "footer_label": "看日記 ↗",
+      "footer_label": "看看穿搭 ↗",
       "word_one": "OUTFIT",
       "word_two": "DAILY",
       "title": "穿搭日記",
-      "description": "記錄每天怎麼穿、喜歡的單品，還有生活裡慢慢形成的個人風格。"
+      "description": "記錄每次的穿搭，也嘗試各種自己喜歡的風格，用穿搭來表達當下的自我。"
     }
   }
 }
