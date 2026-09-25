@@ -49,20 +49,20 @@
     "label": "哪裡找到我？",
     "instagram": {
       "label": "Instagram",
-      "description": "生活、Reels、最近的我",
+      "description": "生活、Reels，還有最近的我",
       "url": "https://www.instagram.com/hi.imkz/"
     },
     "youtube": {
       "label": "YouTube",
-      "description": "更完整的故事與影像",
+      "description": "更完整的影片，都放在這裡",
       "url": "https://www.youtube.com/@hi_imkz"
     },
     "gmail": {
       "label": "Gmail",
-      "description": "合作與聯絡",
+      "description": "合作、邀約或聯絡都可以寫信給我",
       "url": "mailto:tino8087@gmail.com"
     },
-    "copyright": "© 2026 KZ",
+    "copyright": "© 2026 KZ CHENG",
     "back_label": "回到最上面"
   },
   "hero": {
