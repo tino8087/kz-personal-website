@@ -17,12 +17,6 @@
     "description": "KZ CHENG 的個人網站。記錄內容創作、生活探索、HOCHI，以及從 0 到 1 打造品牌的過程。",
     "theme_color": "#f2674a"
   },
-  "theme": {
-    "version": "original",
-    "orange": "#f2674a",
-    "black": "#15130f",
-    "cream": "#f5e8d0"
-  },
   "about": {
     "label": "關於我",
     "headline": "我對很多事情\n都很好奇",
