@@ -24,10 +24,10 @@
   },
   "about": {
     "label": "關於我",
-    "headline": "我對很多事情\n都很好奇。",
-    "body": "遇到真的感興趣的事，我喜歡自己去理解、去試，也喜歡親自體驗看看。生活裡發生的事情，最後常常會變成一支影片、一個想法，或下一個想做的東西。",
+    "headline": "我對很多事情\n都很好奇",
+    "body": "遇到真的很感興趣的事，我會想自己去了解、去試試看，也喜歡親自去感受。生活裡發生的事，常常就這樣變成一支影片、一個想法，或下一件我想去做的事。",
     "dream_label": "我的夢想",
-    "dream": "把原本只有自己看得到的想法，真正帶到這個世界上。",
+    "dream": "把腦中想了很久的東西，一點一點帶進生活裡",
     "media_label": "PORTRAIT / LIFE",
     "media": {
       "type": "image",
@@ -74,9 +74,9 @@
       "poster": "",
       "alt": "KZ 首頁開場影片"
     },
-    "summary": "關於創作、生活、HOCHI，還有那些我正在嘗試的事。",
+    "summary": "關於創作、生活、HOCHI，還有那些我正在嘗試的事",
     "eyebrow": "KZ CHENG / OPENING FILM",
-    "intro": "嗨，我是 KZ。",
+    "intro": "嗨，我是 KZ",
     "video_placeholder": "影片位置",
     "video_label": "OPENING VIDEO",
     "sound_off_label": "聲音 OFF",
@@ -112,7 +112,7 @@
   },
   "creation": {
     "label": "我在做什麼 / 主要創作",
-    "scroll_label": "SCROLL",
+    "scroll_label": "往下看",
     "content": {
       "media": {
         "type": "image",
@@ -120,16 +120,16 @@
         "poster": "",
         "alt": "內容創作封面"
       },
-      "detail_label": "看文章與完整內容 ↗",
+      "detail_label": "看更多內容 ↗",
       "footer_meta": "LIFE → STORY",
       "number": "01",
       "tab_label": "01 內容創作",
       "url": "notes.html",
-      "footer_label": "看文章",
+      "footer_label": "看更多內容",
       "word_one": "REELS",
       "word_two": "YOUTUBE",
       "title": "內容創作",
-      "description": "把生活裡真的發生過的事情，變成 Reels、YouTube 與影像故事。"
+      "description": "把生活裡發生的事，慢慢拍成自己的故事。"
     },
     "ip": {
       "media": {
@@ -138,16 +138,16 @@
         "poster": "/assets/uploads/6d1b0c85-36fa-4e42-9fc8-72c93c99f0d3.png",
         "alt": "HOCHI 角色草稿"
       },
-      "detail_label": "HOCHI / FROM 0 → 1 ↗",
-      "footer_meta": "IDEA → REAL",
+      "detail_label": "看看過程 ↗",
+      "footer_meta": "IDEA → HOCHI",
       "number": "02",
-      "tab_label": "02 IP 角色",
+      "tab_label": "02 IP角色（HOCHI)",
       "url": "",
-      "footer_label": "看過程 ↗",
+      "footer_label": "看看過程 ↗",
       "word_one": "HOCHI",
       "word_two": "0→1",
-      "title": "IP 角色",
-      "description": "從 HOCHI 開始，把一個想法一步一步做成真正存在的東西。"
+      "title": "IP角色（HOCHI)",
+      "description": "把腦中的想法慢慢畫出來，也讓 HOCHI 一點一點有了自己的樣子。"
     },
     "outfit": {
       "media": {
