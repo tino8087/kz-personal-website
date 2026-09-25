@@ -13,8 +13,8 @@
     "empty_text": "之後從 Instagram 留言取得的文章，都可以在這裡重新找到。"
   },
   "site": {
-    "title": "KZ CHENG｜內容創作・角色 IP・生活記錄",
-    "description": "KZ 的個人網站，分享內容創作、角色 IP、穿搭與生活記錄，記錄從 0 到 1 打造自己的品牌，以及一路學習與嘗試的過程。",
+    "title": "KZ CHENG｜創作、生活與 HOCHI",
+    "description": "KZ CHENG 的個人網站。記錄內容創作、生活探索、HOCHI，以及從 0 到 1 打造品牌的過程。",
     "theme_color": "#f2674a"
   },
   "theme": {
@@ -74,13 +74,13 @@
       "poster": "",
       "alt": "KZ 首頁開場影片"
     },
-    "summary": "Reels、HOCHI、生活與正在學習的事。",
-    "eyebrow": "KZ / OPENING FILM",
+    "summary": "關於創作、生活、HOCHI，還有那些我正在嘗試的事。",
+    "eyebrow": "KZ CHENG / OPENING FILM",
     "intro": "嗨，我是 KZ。",
     "video_placeholder": "影片位置",
     "video_label": "OPENING VIDEO",
     "sound_off_label": "聲音 OFF",
-    "headline": "用生活累積體驗，\n用創作把它留下來。"
+    "headline": "去生活去體驗\n再用創作把它留下來"
   },
   "life": {
     "label": "我在做什麼 / 最近也在學",
