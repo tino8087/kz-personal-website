@@ -18,6 +18,7 @@
     "theme_color": "#f2674a"
   },
   "theme": {
+    "version": "original",
     "orange": "#f2674a",
     "black": "#15130f",
     "cream": "#f5e8d0"
