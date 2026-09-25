@@ -2,6 +2,16 @@
   "use strict";
 
   var CONTENT_URL = "content/visual-site.json";
+  var COLOR_VERSIONS = {
+    original: {
+      attribute: "original",
+      themeColor: "#f2674a"
+    },
+    kz_brand: {
+      attribute: "kz-brand",
+      themeColor: "#8c9dad"
+    }
+  };
 
   function readPath(source, path) {
     return path.split(".").reduce(function (value, key) {
@@ -75,19 +85,19 @@
   }
 
   function setBranding(data) {
+    var selectedVersion = data.theme && COLOR_VERSIONS[data.theme.version]
+      ? data.theme.version
+      : "original";
+    var colorVersion = COLOR_VERSIONS[selectedVersion];
+    document.documentElement.setAttribute("data-color-version", colorVersion.attribute);
+
     if (data.site && data.site.title) document.title = data.site.title;
 
     var description = document.querySelector('meta[name="description"]');
     if (description && data.site && data.site.description) description.content = data.site.description;
 
     var themeColor = document.querySelector('meta[name="theme-color"]');
-    if (themeColor && data.site && data.site.theme_color) themeColor.content = data.site.theme_color;
-
-    if (data.theme) {
-      if (data.theme.orange) document.documentElement.style.setProperty("--orange", data.theme.orange);
-      if (data.theme.black) document.documentElement.style.setProperty("--black", data.theme.black);
-      if (data.theme.cream) document.documentElement.style.setProperty("--cream", data.theme.cream);
-    }
+    if (themeColor) themeColor.content = colorVersion.themeColor;
 
     var logoSlot = document.querySelector("[data-logo-slot]");
     if (logoSlot && data.navigation && data.navigation.logo) {
