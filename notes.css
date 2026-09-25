@@ -12,17 +12,6 @@
   --serif: "Songti TC", "Noto Serif TC", Georgia, serif;
 }
 
-:root[data-color-version="kz-brand"] {
-  --orange: #8c9dad;
-  --black: #303b43;
-  --cream: #f8f6f2;
-  --accent: #ffbe98;
-  --card: #f3e6dc;
-  --cream-rgb: 248 246 242;
-  --black-rgb: 48 59 67;
-  --shadow-rgb: 48 59 67;
-}
-
 * { box-sizing: border-box; }
 html { scrollbar-color: var(--orange) var(--cream); scrollbar-width: thin; }
 ::-webkit-scrollbar { width: 10px; }
@@ -36,9 +25,9 @@ h1, h2, p { margin: 0; }
 .notes-nav nav { height: 100%; padding: 6px; display: grid; grid-template-columns: 86px 1fr 126px; align-items: center; gap: 8px; border-radius: 999px; background: var(--black); color: var(--cream); box-shadow: 0 10px 30px rgb(var(--black-rgb) / .18); }
 .notes-logo, .back-home { height: 100%; display: grid; place-items: center; border-radius: 999px; }
 .notes-logo { background: rgb(var(--cream-rgb) / .09); }
-.notes-logo span { position: relative; width: 32px; aspect-ratio: 1; border-radius: 50%; background: var(--cream); }
+.notes-logo span { position: relative; width: 32px; aspect-ratio: 1; border: 2px solid var(--orange); border-radius: 50%; background: var(--cream); }
 .notes-logo span::after { content: ""; position: absolute; width: 34%; aspect-ratio: 1; left: 50%; top: 50%; border-radius: 50%; background: var(--black); transform: translate(-50%,-50%); }
-.notes-logo img { width: 38px; height: 38px; display: block; object-fit: contain; border-radius: 50%; }
+.notes-logo img { width: 38px; height: 38px; display: block; object-fit: contain; border: 2px solid var(--orange); border-radius: 50%; }
 .notes-nav nav > strong { text-align: center; font-size: 13px; }
 .back-home { grid-template-columns: auto auto; align-content: center; justify-content: center; gap: 7px; background: var(--accent); color: var(--black); font-size: 12px; font-weight: 700; }
 
@@ -51,7 +40,7 @@ main { min-height: calc(100svh - 120px); }
 .notes-list { min-height: 72svh; padding: 96px var(--pad) 120px; }
 .list-heading { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 24px; border-bottom: 1px solid rgb(var(--black-rgb) / .58); }
 .list-heading h2 { font-size: clamp(34px, 4vw, 60px); font-weight: 600; letter-spacing: -.035em; }
-.list-heading span { font-size: 12px; font-weight: 700; }
+.list-heading span { color: var(--orange); font-size: 12px; font-weight: 700; }
 .empty-note { min-height: 280px; padding: 42px 0; display: grid; grid-template-columns: minmax(220px, .8fr) minmax(260px, 1.2fr); align-content: center; gap: clamp(32px, 8vw, 120px); border-bottom: 1px solid rgb(var(--black-rgb) / .58); }
 .empty-note span { font-family: var(--serif); font-size: clamp(28px, 3.4vw, 52px); font-weight: 600; }
 .empty-note p { max-width: 500px; font-size: 17px; line-height: 1.8; }

@@ -22,7 +22,7 @@
         entry.target.classList.add('is-visible');
         observer.unobserve(entry.target);
       });
-    }, { threshold: .14, rootMargin: '0px 0px -6% 0px' });
+    }, { threshold: .08, rootMargin: '0px 0px -3% 0px' });
     revealItems.forEach((item) => revealObserver.observe(item));
   } else {
     revealItems.forEach((item) => item.classList.add('is-visible'));

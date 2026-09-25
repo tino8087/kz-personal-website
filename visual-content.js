@@ -2,17 +2,6 @@
   "use strict";
 
   var CONTENT_URL = "content/visual-site.json";
-  var COLOR_VERSIONS = {
-    original: {
-      attribute: "original",
-      themeColor: "#f2674a"
-    },
-    kz_brand: {
-      attribute: "kz-brand",
-      themeColor: "#8c9dad"
-    }
-  };
-
   function readPath(source, path) {
     return path.split(".").reduce(function (value, key) {
       return value && Object.prototype.hasOwnProperty.call(value, key) ? value[key] : undefined;
@@ -85,19 +74,13 @@
   }
 
   function setBranding(data) {
-    var selectedVersion = data.theme && COLOR_VERSIONS[data.theme.version]
-      ? data.theme.version
-      : "original";
-    var colorVersion = COLOR_VERSIONS[selectedVersion];
-    document.documentElement.setAttribute("data-color-version", colorVersion.attribute);
-
     if (data.site && data.site.title) document.title = data.site.title;
 
     var description = document.querySelector('meta[name="description"]');
     if (description && data.site && data.site.description) description.content = data.site.description;
 
     var themeColor = document.querySelector('meta[name="theme-color"]');
-    if (themeColor) themeColor.content = colorVersion.themeColor;
+    if (themeColor) themeColor.content = data.site && data.site.theme_color || "#f2674a";
 
     var logoSlot = document.querySelector("[data-logo-slot]");
     if (logoSlot && data.navigation && data.navigation.logo) {
@@ -110,6 +93,12 @@
     }
   }
 
+  function tidyActionLabels() {
+    var label = document.querySelector('[data-content="navigation.follow_label"]');
+    var arrow = document.querySelector("[data-follow-arrow]");
+    if (label && arrow) arrow.hidden = /[↗→]/.test(label.textContent);
+  }
+
   function bindSoundControl(data) {
     var button = document.querySelector("[data-sound-control]");
     var video = document.querySelector('[data-media-slot="hero.media"] > video');
@@ -118,9 +107,11 @@
     if (!video) {
       button.disabled = true;
       button.setAttribute("aria-disabled", "true");
+      button.hidden = true;
       return;
     }
 
+    button.hidden = false;
     button.disabled = false;
     button.removeAttribute("aria-disabled");
     button.textContent = data.hero.sound_off_label || "聲音 OFF";
@@ -135,6 +126,7 @@
   function applyContent(data) {
     setBranding(data);
     setTextContent(data);
+    tidyActionLabels();
     setLinks(data);
     setMedia(data);
     bindSoundControl(data);
