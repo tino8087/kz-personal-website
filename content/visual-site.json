@@ -15,7 +15,15 @@
   "site": {
     "title": "KZ CHENG｜創作、生活與 HOCHI",
     "description": "KZ CHENG 的個人網站。記錄內容創作、生活探索、HOCHI，以及從 0 到 1 打造品牌的過程。",
-    "theme_color": "#f2674a"
+    "theme_color": "#eb670e"
+  },
+  "theme": {
+    "version": "orange_creative",
+    "primary": "#eb670e",
+    "dark": "#2a3582",
+    "light": "#ffffff",
+    "accent": "#eb670e",
+    "card": "#ffffff"
   },
   "about": {
     "label": "關於我",
@@ -32,8 +40,6 @@
     }
   },
   "navigation": {
-    "logo": "",
-    "logo_alt": "KZ 角色 Logo",
     "about_label": "關於我",
     "creation_label": "我在做什麼",
     "links_label": "哪裡找到我？",
@@ -72,7 +78,7 @@
     "summary": "關於創作、生活、HOCHI，還有那些我正在嘗試的事",
     "eyebrow": "KZ CHENG / OPENING FILM",
     "intro": "嗨，我是 KZ",
-    "video_placeholder": "影片位置",
+    "video_placeholder": "16:9 · 1920 × 1080 px",
     "video_label": "OPENING VIDEO",
     "sound_off_label": "聲音 OFF",
     "headline": "去體驗生活裡想做的事\n再把它變成創作"
