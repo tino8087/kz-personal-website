@@ -4,6 +4,15 @@
   if (!stage) return;
 
   const navLinks = [...document.querySelectorAll('.nav-links a')];
+  document.querySelectorAll('[data-track-event]').forEach((link) => {
+    link.addEventListener('click', () => {
+      try {
+        window.trackEvent?.(link.dataset.trackEvent, {
+          placement: link.dataset.trackPlacement || 'website'
+        });
+      } catch (_) { /* Analytics must never affect navigation. */ }
+    });
+  });
   const parallaxItems = [...document.querySelectorAll('[data-parallax]')];
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const navSections = [

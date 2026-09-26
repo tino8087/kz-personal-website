@@ -2,6 +2,77 @@
   "use strict";
 
   var CONTENT_URL = "content/visual-site.json";
+  var COLOR_VERSIONS = {
+    original: {
+      attribute: "original",
+      primary: "#f2674a",
+      dark: "#15130f",
+      light: "#f5e8d0",
+      accent: "#f2674a",
+      card: "#f5e8d0"
+    },
+    kz_brand: {
+      attribute: "kz-brand",
+      primary: "#8c9dad",
+      dark: "#303b43",
+      light: "#f8f6f2",
+      accent: "#ffbe98",
+      card: "#f3e6dc"
+    },
+    orange_creative: {
+      attribute: "orange-creative",
+      primary: "#eb670e",
+      dark: "#2a3582",
+      light: "#ffffff",
+      accent: "#eb670e",
+      card: "#ffffff"
+    }
+  };
+
+  function normalizeHex(value, fallback) {
+    var hex = typeof value === "string" ? value.trim() : "";
+    if (/^#[0-9a-f]{6}$/i.test(hex)) return hex.toLowerCase();
+    if (/^#[0-9a-f]{3}$/i.test(hex)) {
+      return "#" + hex.slice(1).split("").map(function (part) { return part + part; }).join("").toLowerCase();
+    }
+    return fallback;
+  }
+
+  function hexToRgb(value) {
+    var hex = normalizeHex(value, "#000000").slice(1);
+    return [0, 2, 4].map(function (index) { return parseInt(hex.slice(index, index + 2), 16); }).join(" ");
+  }
+
+  function getPalette(data) {
+    var theme = data && data.theme || {};
+    if (theme.version !== "custom") return COLOR_VERSIONS[theme.version] || COLOR_VERSIONS.original;
+    return {
+      attribute: "custom",
+      primary: normalizeHex(theme.primary, "#eb670e"),
+      dark: normalizeHex(theme.dark, "#2a3582"),
+      light: normalizeHex(theme.light, "#ffffff"),
+      accent: normalizeHex(theme.accent, "#eb670e"),
+      card: normalizeHex(theme.card, "#ffffff")
+    };
+  }
+
+  function applyPalette(data) {
+    var palette = getPalette(data);
+    var style = document.documentElement.style;
+    document.documentElement.setAttribute("data-color-version", palette.attribute);
+
+    if (palette.attribute === "custom") {
+      style.setProperty("--orange", palette.primary);
+      style.setProperty("--black", palette.dark);
+      style.setProperty("--cream", palette.light);
+      style.setProperty("--accent", palette.accent);
+      style.setProperty("--card", palette.card);
+      style.setProperty("--cream-rgb", hexToRgb(palette.light));
+      style.setProperty("--black-rgb", hexToRgb(palette.dark));
+      style.setProperty("--shadow-rgb", hexToRgb(palette.dark));
+    }
+    return palette;
+  }
   function readPath(source, path) {
     return path.split(".").reduce(function (value, key) {
       return value && Object.prototype.hasOwnProperty.call(value, key) ? value[key] : undefined;
@@ -74,13 +145,14 @@
   }
 
   function setBranding(data) {
+    var palette = applyPalette(data);
     if (data.site && data.site.title) document.title = data.site.title;
 
     var description = document.querySelector('meta[name="description"]');
     if (description && data.site && data.site.description) description.content = data.site.description;
 
     var themeColor = document.querySelector('meta[name="theme-color"]');
-    if (themeColor) themeColor.content = data.site && data.site.theme_color || "#f2674a";
+    if (themeColor) themeColor.content = palette.primary;
 
     var logoSlot = document.querySelector("[data-logo-slot]");
     if (logoSlot && data.navigation && data.navigation.logo) {

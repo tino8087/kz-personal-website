@@ -13,6 +13,30 @@
   --fashion: "Bodoni Moda", "Noto Serif TC", "Songti TC", Georgia, serif;
 }
 
+:root[data-color-version="kz-brand"] {
+  --orange: #8c9dad;
+  --black: #303b43;
+  --cream: #f8f6f2;
+  --accent: #ffbe98;
+  --card: #f3e6dc;
+  --cream-rgb: 248 246 242;
+  --black-rgb: 48 59 67;
+  --shadow-rgb: 48 59 67;
+}
+
+:root[data-color-version="orange-creative"] {
+  --orange: #eb670e;
+  --blue: #2a3582;
+  --black: #161616;
+  --cream: #ffffff;
+  --accent: #eb670e;
+  --card: #ffffff;
+  --cream-rgb: 255 255 255;
+  --black-rgb: 22 22 22;
+  --blue-rgb: 42 53 130;
+  --shadow-rgb: 22 22 22;
+}
+
 * { box-sizing: border-box; }
 html { scrollbar-color: var(--orange) var(--cream); scrollbar-width: thin; }
 ::-webkit-scrollbar { width: 10px; }
@@ -25,10 +49,10 @@ h1, h2, p { margin: 0; }
 .notes-nav { position: fixed; z-index: 20; top: 14px; left: 50%; width: min(760px, calc(100% - 32px)); height: 62px; transform: translateX(-50%); }
 .notes-nav nav { height: 100%; padding: 6px; display: grid; grid-template-columns: 86px 1fr 126px; align-items: center; gap: 8px; border-radius: 999px; background: var(--black); color: var(--cream); box-shadow: 0 10px 30px rgb(var(--black-rgb) / .18); }
 .notes-logo, .back-home { height: 100%; display: grid; place-items: center; border-radius: 999px; }
-.notes-logo { background: rgb(var(--cream-rgb) / .09); }
+.notes-logo { position: relative; overflow: hidden; background: #000; }
 .notes-logo span { position: relative; width: 32px; aspect-ratio: 1; border: 2px solid var(--orange); border-radius: 50%; background: var(--cream); }
 .notes-logo span::after { content: ""; position: absolute; width: 34%; aspect-ratio: 1; left: 50%; top: 50%; border-radius: 50%; background: var(--black); transform: translate(-50%,-50%); }
-.notes-logo img { width: 38px; height: 38px; display: block; object-fit: contain; border: 2px solid var(--orange); border-radius: 50%; }
+.notes-logo img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; border: 0; border-radius: inherit; }
 .notes-nav nav > strong { font-family: var(--sans); text-align: center; font-size: 13px; font-weight: 600; letter-spacing: .06em; }
 .back-home { grid-template-columns: auto auto; align-content: center; justify-content: center; gap: 7px; background: var(--accent); color: var(--black); font-size: 12px; font-weight: 700; }
 
@@ -58,11 +82,25 @@ main { min-height: calc(100svh - 120px); }
 .notes-footer div { display: flex; gap: 28px; }
 .notes-footer a:hover { color: var(--accent); }
 
+/* Version 3 keeps articles calm and reserves colour for navigation cues. */
+:root[data-color-version="orange-creative"] .notes-logo { background: transparent; }
+:root[data-color-version="orange-creative"] .notes-logo img {
+  inset: 50% auto auto 50%;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(1.42);
+}
+:root[data-color-version="orange-creative"] .notes-hero { background: var(--cream); }
+:root[data-color-version="orange-creative"] .eyebrow { color: var(--orange); }
+:root[data-color-version="orange-creative"] .notes-footer { background: var(--blue); }
+
 @media (max-width: 760px) {
   :root { --pad: 22px; }
   .notes-nav { top: 8px; width: calc(100% - 16px); height: 52px; }
   .notes-nav nav { padding: 4px; grid-template-columns: 38px 1fr 84px; gap: 3px; }
   .notes-logo span { width: 25px; }
+  .notes-logo img { transform: scale(1.35); }
   .notes-nav nav > strong { font-size: 11px; }
   .back-home { gap: 3px; font-size: 9.5px; }
   .notes-hero { min-height: 82svh; padding-top: 120px; }
@@ -77,4 +115,10 @@ main { min-height: calc(100svh - 120px); }
   .note-read { justify-self: end; }
   .notes-footer { display: block; }
   .notes-footer div { margin-top: 18px; }
+
+  :root[data-color-version="orange-creative"] .notes-logo img {
+    width: 34px;
+    height: 34px;
+    transform: translate(-50%, -50%) scale(1.42);
+  }
 }

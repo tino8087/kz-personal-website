@@ -1,31 +1,35 @@
 <!doctype html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" data-color-version="orange-creative">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="KZ 的個人網站：內容創作、角色 IP、穿搭日記，以及正在學習的生活。">
-  <meta name="theme-color" content="#f2674a">
+  <meta name="theme-color" content="#eb670e">
   <meta name="robots" content="index,follow">
   <title>KZ CHENG｜創作、生活與 HOCHI</title>
+  <meta property="og:title" content="KZ CHENG｜創作、生活與 HOCHI">
+  <meta property="og:description" content="KZ CHENG 的個人網站。記錄內容創作、生活探索、HOCHI，以及正在學習的事。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kz-personal-website.pages.dev/">
+  <link rel="canonical" href="https://kz-personal-website.pages.dev/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Noto+Sans+TC:wght@400;500;600;700;900&family=Noto+Serif+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="visual-direction.css">
+  <link rel="stylesheet" href="visual-direction.css?v=20260926-2">
+  <script src="config.js" defer></script>
   <script src="visual-content.js" defer></script>
+  <script src="tracking.js?v=3" defer></script>
   <script src="visual-direction.js" defer></script>
 </head>
 <body>
   <header class="nav">
     <nav aria-label="主要導覽">
-      <a class="nav-logo" href="#opening" aria-label="回到首頁" data-logo-slot>
-        <span aria-hidden="true"></span>
-      </a>
       <div class="nav-links">
         <a href="#about"><strong data-content="navigation.about_label">關於我</strong></a>
         <a href="#creation"><strong data-content="navigation.creation_label">我在做什麼</strong></a>
         <a href="#links"><strong data-content="navigation.links_label">哪裡找到我？</strong></a>
       </div>
-      <a class="nav-follow" href="https://www.instagram.com/hi.imkz/" target="_blank" rel="noreferrer" data-link="navigation.follow_url">
+      <a class="nav-follow" href="https://www.instagram.com/hi.imkz/" target="_blank" rel="noreferrer" data-link="navigation.follow_url" data-track-event="instagram_click" data-track-placement="navigation">
         <strong data-content="navigation.follow_label">FOLLOW ME</strong><b data-follow-arrow aria-hidden="true">↗</b>
       </a>
     </nav>
@@ -43,7 +47,7 @@
         <div class="video-shape video-shape-one"></div>
         <div class="video-shape video-shape-two"></div>
         <span class="video-tag" data-content="hero.video_label">OPENING VIDEO</span>
-        <span class="video-prompt" data-content="hero.video_placeholder">影片位置</span>
+        <span class="video-prompt" data-content="hero.video_placeholder">16:9 · 1920 × 1080 px</span>
         <button type="button" data-sound-control data-content="hero.sound_off_label" aria-label="切換影片聲音" aria-disabled="true" disabled>聲音 OFF</button>
       </div>
       <p class="opening-now" data-reveal data-content="hero.summary" style="--reveal-delay: 240ms">Reels、HOCHI、生活與正在學習的事。</p>
@@ -64,6 +68,7 @@
       <div class="about-media" data-parallax="portrait" data-reveal data-media-slot="about.media" aria-label="KZ 人物影像位置" style="--reveal-delay: 100ms">
         <div class="portrait-shape"></div>
         <span data-content="about.media_label">PORTRAIT / LIFE</span>
+        <em class="media-size-guide">4:5 · 1600 × 2000 px</em>
       </div>
     </section>
 
@@ -98,15 +103,15 @@
 
         <div class="media-stack" data-reveal aria-label="主要創作影像轉場示意" style="--reveal-delay: 100ms">
           <a class="media-card media-content" href="notes.html" data-link="creation.content.url" aria-label="前往內容筆記">
-            <div class="media-art reels-art" data-media-slot="creation.content.media"><span data-content="creation.content.word_one">REELS</span><span data-content="creation.content.word_two">YOUTUBE</span></div>
+            <div class="media-art reels-art" data-media-slot="creation.content.media"><span data-content="creation.content.word_one">REELS</span><span data-content="creation.content.word_two">YOUTUBE</span><em class="media-size-guide">1:1 · 1600 × 1600 px</em></div>
             <footer><strong data-content="creation.content.title">內容創作</strong><small class="card-action"><span data-content="creation.content.footer_label">看文章</span> <b aria-hidden="true">↗</b></small></footer>
           </a>
           <a class="media-card media-hochi" data-link="creation.ip.url">
-            <div class="media-art hochi-art" data-media-slot="creation.ip.media"><span data-content="creation.ip.word_one">HOCHI</span><span data-content="creation.ip.word_two">0 → 1</span></div>
+            <div class="media-art hochi-art" data-media-slot="creation.ip.media"><span data-content="creation.ip.word_one">HOCHI</span><span data-content="creation.ip.word_two">0 → 1</span><em class="media-size-guide">1:1 · 1600 × 1600 px</em></div>
             <footer><strong data-content="creation.ip.title">IP 角色</strong><small data-content="creation.ip.footer_meta">FROM 0 → 1</small></footer>
           </a>
           <a class="media-card media-outfit" data-link="creation.outfit.url">
-            <div class="media-art outfit-art" data-media-slot="creation.outfit.media"><span data-content="creation.outfit.word_one">OUTFIT</span><span data-content="creation.outfit.word_two">DAILY</span></div>
+            <div class="media-art outfit-art" data-media-slot="creation.outfit.media"><span data-content="creation.outfit.word_one">OUTFIT</span><span data-content="creation.outfit.word_two">DAILY</span><em class="media-size-guide">1:1 · 1600 × 1600 px</em></div>
             <footer><strong data-content="creation.outfit.title">穿搭日記</strong><small data-content="creation.outfit.footer_meta">WEAR → REMEMBER</small></footer>
           </a>
         </div>
@@ -122,11 +127,11 @@
 想學會的事。</h2>
       </div>
       <article class="interest interest-dj" data-parallax="dj">
-        <div class="interest-media dj-art" data-reveal data-media-slot="life.dj.media"><span data-content="life.dj.media_word">DJ</span><small data-content="life.dj.media_label">LEARNING / SOUND</small></div>
+        <div class="interest-media dj-art" data-reveal data-media-slot="life.dj.media"><span data-content="life.dj.media_word">DJ</span><small data-content="life.dj.media_label">LEARNING / SOUND</small><em class="media-size-guide">1:1 · 1600 × 1600 px</em></div>
         <div class="interest-copy" data-reveal style="--reveal-delay: 80ms"><p data-content="life.dj.title">DJ 新手</p><span data-content="life.dj.note">正在從零開始學。</span></div>
       </article>
       <article class="interest interest-tennis" data-parallax="tennis">
-        <div class="interest-media tennis-art" data-reveal data-media-slot="life.tennis.media"><span data-content="life.tennis.media_word">TENNIS</span><small data-content="life.tennis.media_label">PRACTICE / DREAM</small></div>
+        <div class="interest-media tennis-art" data-reveal data-media-slot="life.tennis.media"><span data-content="life.tennis.media_word">TENNIS</span><small data-content="life.tennis.media_label">PRACTICE / DREAM</small><em class="media-size-guide">1:1 · 1600 × 1600 px</em></div>
         <div class="interest-copy" data-reveal style="--reveal-delay: 80ms"><p data-content="life.tennis.title">網球</p><span data-content="life.tennis.note">持續練習，也享受進步。</span></div>
       </article>
     </section>
@@ -134,8 +139,8 @@
     <section class="links" id="links">
       <p class="page-label" data-reveal data-content="links.label">哪裡找到我？</p>
       <div class="links-list">
-        <a data-reveal href="https://www.instagram.com/hi.imkz/" data-link="links.instagram.url" target="_blank" rel="noreferrer"><span><strong data-content="links.instagram.label">Instagram</strong><small data-content="links.instagram.description">日常、Reels 與最新更新</small></span><b>↗</b></a>
-        <a data-reveal href="https://www.youtube.com/@hi_imkz" data-link="links.youtube.url" target="_blank" rel="noreferrer" style="--reveal-delay: 70ms"><span><strong data-content="links.youtube.label">YouTube</strong><small data-content="links.youtube.description">更完整的故事與影像</small></span><b>↗</b></a>
+        <a data-reveal href="https://www.instagram.com/hi.imkz/" data-link="links.instagram.url" target="_blank" rel="noreferrer" data-track-event="instagram_click" data-track-placement="links"><span><strong data-content="links.instagram.label">Instagram</strong><small data-content="links.instagram.description">日常、Reels 與最新更新</small></span><b>↗</b></a>
+        <a data-reveal href="https://www.youtube.com/@hi_imkz" data-link="links.youtube.url" target="_blank" rel="noreferrer" data-track-event="youtube_click" data-track-placement="links" style="--reveal-delay: 70ms"><span><strong data-content="links.youtube.label">YouTube</strong><small data-content="links.youtube.description">更完整的故事與影像</small></span><b>↗</b></a>
         <a data-reveal href="mailto:tino8087@gmail.com" data-link="links.gmail.url" style="--reveal-delay: 140ms"><span><strong data-content="links.gmail.label">Gmail</strong><small data-content="links.gmail.description">合作與聯絡</small></span><b>↗</b></a>
       </div>
       <footer><span data-content="links.copyright">© 2026 KZ</span><a href="#opening"><span data-content="links.back_label">回到最上面</span> ↑</a></footer>
