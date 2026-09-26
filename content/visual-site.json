@@ -76,7 +76,7 @@
       "alt": "KZ 首頁開場影片"
     },
     "summary": "關於創作、生活、HOCHI，還有那些我正在嘗試的事",
-    "eyebrow": "KZ CHENG / OPENING FILM",
+    "eyebrow": "",
     "intro": "嗨，我是 KZ",
     "video_placeholder": "16:9 · 1920 × 1080 px",
     "video_label": "OPENING VIDEO",
@@ -90,7 +90,7 @@
       "media_word": "DJ",
       "title": "DJ 新手",
       "note": "近期開始接觸 DJ，還在摸索，也玩得很開心。",
-      "media_label": "MUSIC / LEARNING",
+      "media_label": "",
       "media": {
         "type": "image",
         "src": "",
@@ -130,7 +130,7 @@
       "word_one": "REELS",
       "word_two": "YOUTUBE",
       "title": "內容創作",
-      "description": "把生活裡發生的事，慢慢拍成自己的故事。"
+      "description": "把生活裡各種發生的事，拍成自己的故事。"
     },
     "ip": {
       "media": {
@@ -148,7 +148,7 @@
       "word_one": "HOCHI",
       "word_two": "0→1",
       "title": "IP角色（HOCHI)",
-      "description": "把腦中的想法慢慢畫出來，也讓 HOCHI 一點一點有了自己的樣子。"
+      "description": "把腦中的想法畫出來，也讓 HOCHI 一點一點有了自己的樣子。"
     },
     "outfit": {
       "media": {
