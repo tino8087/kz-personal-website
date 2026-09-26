@@ -97,14 +97,14 @@ collections:
               - { label: 夢想小標, name: dream_label, widget: string, required: false }
               - { label: 夢想內容, name: dream, widget: text, required: false }
               - { label: 照片角落標籤, name: media_label, widget: string, required: false }
-              - label: 人物／生活照片（4:5）
+              - label: 人物／生活照片（4:3）
                 name: media
                 widget: object
                 required: false
                 fields:
                   - { label: 素材類型, name: type, widget: select, options: [{ label: 圖片, value: image }, { label: 影片, value: video }], required: false }
-                  - { label: 上傳照片或影片（1600 × 2000 px）, name: src, widget: file, required: false, hint: "4:5 直式；人物與重點請放在畫面中央，桌機與手機都會自動裁切。" }
-                  - { label: 影片封面（1600 × 2000 px）, name: poster, widget: image, required: false, hint: "4:5 直式圖片。" }
+                  - { label: 上傳照片或影片（1600 × 1200 px）, name: src, widget: file, required: false, hint: "4:3 橫式；人物與重點請放在畫面中央，手機版會從兩側裁切。" }
+                  - { label: 影片封面（1600 × 1200 px）, name: poster, widget: image, required: false, hint: "4:3 橫式圖片。" }
                   - { label: 素材說明, name: alt, widget: string, required: false }
           - label: 主要創作
             name: creation
@@ -128,14 +128,14 @@ collections:
                   - { label: 占位副文字, name: word_two, widget: string, required: false }
                   - { label: 卡片按鈕文字, name: footer_label, widget: string, required: false }
                   - { label: 卡片右下文字, name: footer_meta, widget: string, required: false }
-                  - label: 卡片照片／影片（1:1）
+                  - label: 卡片照片／影片（8:5）
                     name: media
                     widget: object
                     required: false
                     fields:
                       - { label: 素材類型, name: type, widget: select, options: [{ label: 圖片, value: image }, { label: 影片, value: video }], required: false }
-                      - { label: 上傳照片或影片（1600 × 1600 px）, name: src, widget: file, required: false, hint: 正方形最能兼顧桌機與手機裁切；重點請放中央。 }
-                      - { label: 影片封面（1600 × 1600 px）, name: poster, widget: image, required: false }
+                      - { label: 上傳照片或影片（1600 × 1024 px）, name: src, widget: file, required: false, hint: "8:5 橫式；主要內容請放中央安全區，手機版會略微裁切左右。" }
+                      - { label: 影片封面（1600 × 1024 px）, name: poster, widget: image, required: false }
                       - { label: 素材說明, name: alt, widget: string, required: false }
               - label: IP 角色
                 name: ip
@@ -152,14 +152,14 @@ collections:
                   - { label: 占位副文字, name: word_two, widget: string, required: false }
                   - { label: 卡片按鈕文字, name: footer_label, widget: string, required: false }
                   - { label: 卡片右下文字, name: footer_meta, widget: string, required: false }
-                  - label: 卡片照片／影片（1:1）
+                  - label: 卡片照片／影片（8:5）
                     name: media
                     widget: object
                     required: false
                     fields:
                       - { label: 素材類型, name: type, widget: select, options: [{ label: 圖片, value: image }, { label: 影片, value: video }], required: false }
-                      - { label: 上傳照片或影片（1600 × 1600 px）, name: src, widget: file, required: false, hint: 正方形最能兼顧桌機與手機裁切；重點請放中央。 }
-                      - { label: 影片封面（1600 × 1600 px）, name: poster, widget: image, required: false }
+                      - { label: 上傳照片或影片（1600 × 1024 px）, name: src, widget: file, required: false, hint: "8:5 橫式；主要內容請放中央安全區，手機版會略微裁切左右。" }
+                      - { label: 影片封面（1600 × 1024 px）, name: poster, widget: image, required: false }
                       - { label: 素材說明, name: alt, widget: string, required: false }
               - label: 穿搭日記
                 name: outfit
@@ -176,14 +176,14 @@ collections:
                   - { label: 占位副文字, name: word_two, widget: string, required: false }
                   - { label: 卡片按鈕文字, name: footer_label, widget: string, required: false }
                   - { label: 卡片右下文字, name: footer_meta, widget: string, required: false }
-                  - label: 卡片照片／影片（1:1）
+                  - label: 卡片照片／影片（8:5）
                     name: media
                     widget: object
                     required: false
                     fields:
                       - { label: 素材類型, name: type, widget: select, options: [{ label: 圖片, value: image }, { label: 影片, value: video }], required: false }
-                      - { label: 上傳照片或影片（1600 × 1600 px）, name: src, widget: file, required: false, hint: 正方形最能兼顧桌機與手機裁切；重點請放中央。 }
-                      - { label: 影片封面（1600 × 1600 px）, name: poster, widget: image, required: false }
+                      - { label: 上傳照片或影片（1600 × 1024 px）, name: src, widget: file, required: false, hint: "8:5 橫式；主要內容請放中央安全區，手機版會略微裁切左右。" }
+                      - { label: 影片封面（1600 × 1024 px）, name: poster, widget: image, required: false }
                       - { label: 素材說明, name: alt, widget: string, required: false }
           - label: 最近也在學
             name: life
@@ -201,14 +201,14 @@ collections:
                   - { label: 標題, name: title, widget: string, required: false }
                   - { label: 說明, name: note, widget: text, required: false }
                   - { label: 影像角落標籤, name: media_label, widget: string, required: false }
-                  - label: 照片／影片（1:1）
+                  - label: 照片／影片（5:4）
                     name: media
                     widget: object
                     required: false
                     fields:
                       - { label: 素材類型, name: type, widget: select, options: [{ label: 圖片, value: image }, { label: 影片, value: video }], required: false }
-                      - { label: 上傳照片或影片（1600 × 1600 px）, name: src, widget: file, required: false, hint: 正方形；人物或器材請放中央，會依螢幕比例裁切。 }
-                      - { label: 影片封面（1600 × 1600 px）, name: poster, widget: image, required: false }
+                      - { label: 上傳照片或影片（1600 × 1280 px）, name: src, widget: file, required: false, hint: "5:4 橫式；人物或器材請放中央安全區。" }
+                      - { label: 影片封面（1600 × 1280 px）, name: poster, widget: image, required: false }
                       - { label: 素材說明, name: alt, widget: string, required: false }
               - label: 網球
                 name: tennis
@@ -219,14 +219,14 @@ collections:
                   - { label: 標題, name: title, widget: string, required: false }
                   - { label: 說明, name: note, widget: text, required: false }
                   - { label: 影像角落標籤, name: media_label, widget: string, required: false }
-                  - label: 照片／影片（1:1）
+                  - label: 照片／影片（21:9）
                     name: media
                     widget: object
                     required: false
                     fields:
                       - { label: 素材類型, name: type, widget: select, options: [{ label: 圖片, value: image }, { label: 影片, value: video }], required: false }
-                      - { label: 上傳照片或影片（1600 × 1600 px）, name: src, widget: file, required: false, hint: 正方形；人物或動作請放中央，會依螢幕比例裁切。 }
-                      - { label: 影片封面（1600 × 1600 px）, name: poster, widget: image, required: false }
+                      - { label: 上傳照片或影片（1680 × 720 px）, name: src, widget: file, required: false, hint: "21:9 超寬幅；人物或動作請放中央安全區。" }
+                      - { label: 影片封面（1680 × 720 px）, name: poster, widget: image, required: false }
                       - { label: 素材說明, name: alt, widget: string, required: false }
           - label: 哪裡找到我？
             name: links
