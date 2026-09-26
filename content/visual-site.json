@@ -30,7 +30,7 @@
     "headline": "我對很多事情\n都很好奇",
     "body": "遇到真的很感興趣的事，我會想自己去了解、去試試看，也喜歡親自去感受。生活裡發生的事，常常就這樣變成一支影片、一個想法，或下一件我想去做的事。",
     "dream_label": "我的夢想",
-    "dream": "把腦中想了很久的東西\n一點一點帶進生活裡",
+    "dream": "把腦中一直想做的事，一個一個做出來，最後建立一個真正屬於自己的品牌，也活成自己喜歡的樣子。",
     "media_label": "",
     "media": {
       "type": "image",
@@ -84,8 +84,8 @@
     "headline": "去體驗生活裡想做的事\n再把它變成創作"
   },
   "life": {
-    "label": "我在做什麼 / 最近也在學",
-    "headline": "最近正在學........",
+    "label": "我在做什麼？",
+    "headline": "最近我正在學........",
     "dj": {
       "media_word": "DJ",
       "title": "DJ 新手",
@@ -102,7 +102,7 @@
       "media_word": "TENNIS",
       "title": "網球",
       "note": "有空就會去打，也很喜歡自己越打越順的感覺。",
-      "media_label": "PRACTICE / PLAY",
+      "media_label": "",
       "media": {
         "type": "image",
         "src": "",
@@ -112,7 +112,7 @@
     }
   },
   "creation": {
-    "label": "我在做什麼 / 主要創作",
+    "label": "我在做什麼？",
     "scroll_label": "往下看",
     "content": {
       "media": {
