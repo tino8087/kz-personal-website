@@ -20,7 +20,7 @@ export function layout({ title, description, canonical, body, resourceSlug = '',
   const schema = article ? `<script type="application/ld+json">${JSON.stringify(article).replace(/</g, '\\u003c')}</script>` : '';
   return `<!doctype html>
 <html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${safeTitle}</title><meta name="description" content="${safeDescription}"><link rel="canonical" href="${canonical}">
+<title>${safeTitle}</title><meta name="description" content="${safeDescription}"><meta name="theme-color" content="#eb670e"><link rel="canonical" href="${canonical}">
 <meta property="og:type" content="${article ? 'article' : 'website'}"><meta property="og:title" content="${safeTitle}"><meta property="og:description" content="${safeDescription}"><meta property="og:url" content="${canonical}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Noto+Sans+TC:wght@400;500;600;700;900&family=Noto+Serif+TC:wght@300;400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="/resources/resources.css"><script src="/config.js" defer></script><script src="/tracking.js?v=2" defer></script>${schema}</head>
 <body${resourceSlug ? ` data-resource-slug="${escapeHtml(resourceSlug)}"` : ''}><header class="resource-header"><a class="resource-logo" href="/">KZ</a><nav><a href="/">首頁</a><a href="/resources/" aria-current="page">RESOURCES</a></nav></header>${body}<script src="/resources/resources.js" defer></script></body></html>`;
