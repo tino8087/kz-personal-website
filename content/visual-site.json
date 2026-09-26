@@ -34,7 +34,7 @@
     "media_label": "PORTRAIT / LIFE",
     "media": {
       "type": "image",
-      "src": "",
+      "src": "/assets/uploads/未命名設計-1-.png",
       "poster": "",
       "alt": "KZ 人物與生活照片"
     }
@@ -117,7 +117,7 @@
     "content": {
       "media": {
         "type": "image",
-        "src": "",
+        "src": "/assets/uploads/sdasdsa.png",
         "poster": "",
         "alt": "內容創作封面"
       },
@@ -135,7 +135,7 @@
     "ip": {
       "media": {
         "type": "image",
-        "src": "",
+        "src": "/assets/uploads/未命名設計.png",
         "poster": "",
         "alt": "HOCHI 角色草稿"
       },
@@ -153,7 +153,7 @@
     "outfit": {
       "media": {
         "type": "image",
-        "src": "",
+        "src": "/assets/uploads/img_0042.jpg",
         "poster": "",
         "alt": "穿搭日記封面"
       },
