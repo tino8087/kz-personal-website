@@ -109,6 +109,7 @@
     var isVideo = media.type === "video";
     var element = document.createElement(isVideo ? "video" : "img");
     element.className = "cms-media";
+    element.style.objectFit = media.fit === "cover" ? "cover" : "contain";
 
     if (isVideo) {
       element.autoplay = true;
@@ -138,6 +139,10 @@
       var mediaElement = createMedia(media);
       if (!mediaElement) return;
 
+      mediaElement.addEventListener("error", function () {
+        mediaElement.remove();
+        container.classList.remove("has-media", "has-video");
+      }, { once: true });
       container.prepend(mediaElement);
       container.classList.add("has-media");
       if (media.type === "video") container.classList.add("has-video");
@@ -195,6 +200,29 @@
     });
   }
 
+  function tidyPlaceholders() {
+    document.querySelectorAll('.video-prompt, .interest-media small').forEach(function (label) {
+      label.classList.toggle('is-size-hint', /\d+\s*[×x]\s*\d+\s*px/i.test(label.textContent));
+    });
+  }
+
+  function setNotesAvailability(data) {
+    if (!document.querySelector('.creation-scroll')) return;
+    fetch('content/resources.json', { cache: 'no-store' })
+      .then(function (response) { if (!response.ok) throw new Error('Notes unavailable'); return response.json(); })
+      .then(function (result) {
+        var hasNotes = (result.resources || []).some(function (entry) { return entry && entry.published && entry.title && entry.slug; });
+        if (hasNotes || !data.notes || !data.notes.empty_title) return;
+        document.querySelectorAll('[data-link="creation.content.url"]').forEach(function (link) {
+          var url = new URL(link.getAttribute('href') || '', location.href);
+          if (url.origin !== location.origin || !/\/notes(?:\.html)?\/?$/.test(url.pathname)) return;
+          var label = link.querySelector('[data-content="creation.content.footer_label"]');
+          if (label) label.textContent = data.notes.empty_title;
+          else if (link.classList.contains('detail-link')) link.textContent = data.notes.empty_title + ' ↗';
+        });
+      }).catch(function () { /* Preserve existing links if availability cannot be checked. */ });
+  }
+
   function applyContent(data) {
     setBranding(data);
     setTextContent(data);
@@ -202,6 +230,8 @@
     setLinks(data);
     setMedia(data);
     bindSoundControl(data);
+    tidyPlaceholders();
+    setNotesAvailability(data);
     window.KZ_SITE_CONTENT = data;
     document.dispatchEvent(new CustomEvent("kz:content-ready", { detail: data }));
   }
