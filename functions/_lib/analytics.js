@@ -1,5 +1,13 @@
 export const EVENT_NAMES = new Set([
   'page_view',
+  'view_about',
+  'view_creation',
+  'view_content_creation',
+  'view_ip_character',
+  'view_outfit_diary',
+  'view_life',
+  'view_links',
+
   'instagram_click',
   'youtube_click',
   'social_placeholder_click',
