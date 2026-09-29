@@ -1,26 +1,19 @@
 <!doctype html>
-<html lang="zh-Hant">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="robots" content="noindex,nofollow,noarchive">
-  <title>KZ Dashboard</title>
-  <link rel="stylesheet" href="/admin/dashboard.css">
-</head>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>KZ｜網站數據</title><link rel="stylesheet" href="/admin/dashboard.css?v=20260929-3"><script src="/analytics-preferences.js?v=20260929" defer></script></head>
 <body>
-  <header><a class="brand" href="/">KZ</a><nav><a href="/admin/content/">編輯網站內容</a><a href="/resources/">Resources（資源）</a></nav></header>
-  <main>
-    <div class="heading"><div><p class="eyebrow">PRIVATE DASHBOARD（私人數據儀表板）</p><h1>網站現在表現如何</h1></div><div class="period" role="group" aria-label="日期範圍"><button data-days="1">Today（今天）</button><button data-days="7" class="active">7 Days（7 天）</button><button data-days="30">30 Days（30 天）</button><button data-days="all">All Time（全部期間）</button></div></div>
-    <div id="status" class="status" role="status">讀取資料中…</div>
-    <div id="dashboard" hidden>
-      <section class="overview" aria-labelledby="overview-title"><h2 id="overview-title">Overview（總覽）</h2><div class="headline-numbers"><div><strong id="sessions">0</strong><span>Anonymous Sessions（匿名工作階段）</span></div><div><strong id="page-views">0</strong><span>Page Views（頁面瀏覽）</span></div></div><div class="trend"><h3>Traffic Trend（流量趨勢）</h3><div id="trend"></div></div></section>
-      <section><h2>Traffic（流量）</h2><div class="columns"><div><h3>Top Pages（熱門頁面）</h3><div id="top-pages" class="list"></div></div><div><h3>Traffic Sources（流量來源）</h3><div id="sources" class="list"></div></div><div><h3>UTM Campaign（UTM 活動）</h3><div id="campaigns" class="list"></div></div><div><h3>Device（裝置）</h3><div id="devices" class="list"></div></div></div></section>
-      <section><h2>Content Engagement（內容互動）</h2><div id="engagement" class="metrics"></div></section>
-      <section><h2>Actions（操作）</h2><div id="actions" class="metrics"></div></section>
-      <section><h2>Resources（資源）</h2><div id="resources" class="list"></div></section>
-      <p class="updated" id="updated"></p>
-    </div>
-  </main>
-  <script src="/admin/dashboard.js" defer></script>
-</body>
-</html>
+<header><a class="brand" href="/">KZ</a><nav><a href="/admin/content/">編輯網站內容</a><a href="/">查看前台 ↗</a></nav></header>
+<main>
+<div class="heading"><div><p class="eyebrow">KZ / 網站數據</p><h1>看看大家怎麼認識你</h1></div><button id="refresh" type="button">重新整理</button></div>
+<div class="period" role="group" aria-label="日期範圍"><button data-days="1" aria-pressed="false">今天</button><button data-days="7" class="active" aria-pressed="true">近一週</button><button data-days="30" aria-pressed="false">近一個月</button><button data-days="365" aria-pressed="false">近一年</button><button data-days="all" aria-pressed="false">全部</button></div>
+<p class="help" id="period-note">以台灣時間計算；一週為近 7 天、一個月為近 30 天、一年為近 365 天，均包含今天。</p>
+<aside class="privacy-panel" aria-labelledby="privacy-title"><h2 id="privacy-title">排除自己的瀏覽</h2><label class="privacy-choice"><input id="exclude-self" type="checkbox">不計入我在這個瀏覽器的瀏覽</label><p id="privacy-status" role="status"></p><p class="help">首次進入內容後台或數據後台會自動啟用。手機、其他瀏覽器及無痕視窗須各自設定；清除網站資料後需重新啟用。只影響之後的記錄，既有資料無法可靠辨認哪些是你本人。</p></aside>
+<div id="status" class="status" role="status">讀取資料中…</div>
+<div id="dashboard" hidden>
+<section class="overview"><h2>現階段先看這六個數字</h2><div id="summary" class="metrics summary"></div><p class="help">造訪次數以匿名工作階段計算，不等於不重複人數。不同分頁或重新開啟瀏覽器，可能被計為另一次造訪。</p></section>
+<section><h2>流量有沒有成長</h2><p class="help" id="trend-note"></p><div id="trend" class="trend-chart"></div></section>
+<section><h2>觀眾從哪裡來</h2><div class="columns"><div><h3>流量來源 · 頁面瀏覽次數</h3><div id="sources"></div></div><div><h3>使用裝置 · 頁面瀏覽次數</h3><div id="devices"></div></div></div><h3 class="subheading">哪個內容帶來流量 · UTM</h3><p class="help">對照來源、位置、活動與內容標記，辨認哪支 Reels 或哪個連結帶來瀏覽。</p><div id="campaigns"></div></section>
+<section><h2>大家看到了哪裡</h2><p class="help">各項比例是「同期間有進入首頁，且發生此互動的造訪」占首頁造訪的比例；不是依序完成的漏斗，也不是讀完率。</p><div id="engagement" class="metrics"></div><p class="help">新版區塊事件從新版追蹤上線後開始累積；先前沒有記錄的互動無法補回。</p></section>
+<section><h2>看完後，有沒有進一步行動</h2><div id="actions" class="metrics"></div><p class="help">IG／YouTube 數字代表連結點擊，不代表已追蹤或訂閱。文章瀏覽代表開啟文章，不代表讀完。</p></section>
+<section><div class="columns"><div><h2>熱門文章</h2><div id="resources"></div></div><div><h2>熱門頁面</h2><div id="top-pages"></div></div></div></section>
+<p class="updated" id="updated"></p><p class="help">「全部」指目前資料庫保留的資料。廣告攔截、離線或傳送失敗可能使數字偏少。本頁使用網站事件資料，與 Cloudflare Web Analytics 的計算方式不同。</p>
+</div></main><script src="/admin/dashboard.js?v=20260929-3" defer></script></body></html>
