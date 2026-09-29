@@ -5,7 +5,7 @@
   "scripts": {
     "site": "python3 -m http.server 8033 --bind 127.0.0.1",
     "cms": "decap-server",
-    "test": "node tests/analytics.mjs"
+    "test": "node tests/analytics.mjs && node tests/analytics-report.mjs && node tests/tracking-sections.mjs && node tests/dashboard.mjs && node tests/analytics-exclusion.mjs"
   },
   "devDependencies": {
     "decap-server": "^3.3.1"

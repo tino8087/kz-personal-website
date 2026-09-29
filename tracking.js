@@ -5,6 +5,14 @@
   const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'];
   const EVENT_NAMES = Object.freeze({
     PAGE_VIEW: 'page_view',
+    VIEW_ABOUT: 'view_about',
+    VIEW_CREATION: 'view_creation',
+    VIEW_CONTENT_CREATION: 'view_content_creation',
+    VIEW_IP_CHARACTER: 'view_ip_character',
+    VIEW_OUTFIT_DIARY: 'view_outfit_diary',
+    VIEW_LIFE: 'view_life',
+    VIEW_LINKS: 'view_links',
+
     INSTAGRAM_CLICK: 'instagram_click',
     YOUTUBE_CLICK: 'youtube_click',
     SOCIAL_PLACEHOLDER_CLICK: 'social_placeholder_click',
@@ -51,6 +59,7 @@
     });
     const context = {
       utm,
+      referrer_host: typeof stored.referrer_host === 'string' ? stored.referrer_host : initialReferrerHost(),
       landing_path: stored.landing_path || window.location.pathname,
       page_path: window.location.pathname
     };
@@ -81,17 +90,20 @@
     return 'Desktop';
   }
 
-  function referrerHost() {
-    try { return document.referrer ? new URL(document.referrer).hostname.slice(0, 200) : ''; }
-    catch (_) { return ''; }
+  function initialReferrerHost() {
+    try {
+      const host = document.referrer ? new URL(document.referrer).hostname.slice(0, 200) : '';
+      return host === window.location.hostname ? '' : host;
+    } catch (_) { return ''; }
   }
 
   function persistEvent(detail) {
+    if (['localhost','127.0.0.1','[::1]'].includes(window.location.hostname)) return;
     const properties = detail.properties || {};
     const payload = {
       event_name: detail.name,
       page_path: properties.page_path || window.location.pathname,
-      referrer: referrerHost(),
+      referrer: context.referrer_host,
       device_type: deviceType(),
       utm_source: properties.utm_source || '',
       utm_medium: properties.utm_medium || '',
@@ -120,6 +132,7 @@
 
   function trackEvent(eventName, properties = {}, options = {}) {
     try {
+      if (window.KZAnalyticsPrivacy?.isExcluded()) return false;
       if (!eventName || typeof eventName !== 'string') return false;
       const onceKey = options.onceKey || '';
       if (onceKey && fired.has(onceKey)) return false;
@@ -145,36 +158,42 @@
   }
 
   function observeSections() {
-    if (!('IntersectionObserver' in window)) return;
     const targets = [
-      ['#journey', EVENT_NAMES.VIEW_ZERO_TO_ONE],
-      ['#now', EVENT_NAMES.VIEW_RIGHT_NOW],
-      ['#next', EVENT_NAMES.VIEW_WHATS_NEXT]
-    ];
-    const timers = new WeakMap();
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
-          if (timers.has(entry.target)) return;
-          const timer = window.setTimeout(() => {
-            const eventName = entry.target.dataset.analyticsView;
-            trackEvent(eventName, { section_id: entry.target.id }, { onceKey: eventName });
-            observer.unobserve(entry.target);
-            timers.delete(entry.target);
-          }, 700);
-          timers.set(entry.target, timer);
-        } else if (timers.has(entry.target)) {
-          clearTimeout(timers.get(entry.target));
-          timers.delete(entry.target);
-        }
+      ['#journey', 'view_zero_to_one'], ['#now', 'view_right_now'], ['#next', 'view_whats_next'],
+      ['.about-copy', 'view_about'], ['.creation-stage', 'view_creation'],
+      ['.copy-content', 'view_content_creation'], ['.copy-hochi', 'view_ip_character'],
+      ['.copy-outfit', 'view_outfit_diary'], ['.life-heading', 'view_life'], ['.links-list', 'view_links']
+    ].map(([selector, name]) => ({ element:document.querySelector(selector),name,timer:null })).filter(t=>t.element);
+    const visible = element => {
+      if (document.hidden || element.closest('[aria-hidden="true"], [inert]')) return false;
+      const style = getComputedStyle(element);
+      if (style.visibility === 'hidden' || Number(style.opacity) < .9) return false;
+      const rect = element.getBoundingClientRect();
+      const exposed = Math.max(0,Math.min(rect.bottom,innerHeight)-Math.max(rect.top,70));
+      return rect.width > 0 && rect.height > 0 && exposed >= Math.min(rect.height,innerHeight-70)*.4;
+    };
+    let scheduled = false;
+    const measure = () => {
+      scheduled = false;
+      targets.forEach(target => {
+        if (fired.has(target.name)) return;
+        if (visible(target.element)) {
+          if (target.timer) return;
+          target.timer = setTimeout(() => {
+            target.timer = null;
+            if (visible(target.element)) trackEvent(target.name,{section_id:target.element.id||target.name},{onceKey:target.name});
+          },900);
+        } else if (target.timer) { clearTimeout(target.timer); target.timer = null; }
       });
-    }, { threshold: [0.3] });
-    targets.forEach(([selector, eventName]) => {
-      const element = document.querySelector(selector);
-      if (!element) return;
-      element.dataset.analyticsView = eventName;
-      observer.observe(element);
-    });
+    };
+    const schedule = () => { if (!scheduled) { scheduled = true; requestAnimationFrame(measure); } };
+    window.addEventListener('scroll',schedule,{passive:true});
+    window.addEventListener('resize',schedule,{passive:true});
+    document.addEventListener('visibilitychange',schedule);
+    document.addEventListener('kz:content-ready',schedule);
+    document.addEventListener('transitionend',schedule);
+    document.addEventListener('kz:scene-change',measure);
+    schedule();
   }
 
   function observeScrollDepth() {
@@ -200,6 +219,7 @@
   }
 
   function loadCloudflareAnalytics() {
+    if (window.KZAnalyticsPrivacy?.isExcluded()) return;
     const token = config.cloudflareToken || '';
     if (!/^[a-f0-9]{32}$/i.test(token)) return;
     if (document.querySelector('script[src*="static.cloudflareinsights.com/beacon.min.js"]')) return;

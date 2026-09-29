@@ -37,6 +37,11 @@
     revealItems.forEach((item) => item.classList.add('is-visible'));
   }
 
+  const copies = [...document.querySelectorAll('.copy-scene')];
+  const cards = [...document.querySelectorAll('.media-card')];
+  const staticLayout = window.matchMedia('(max-height: 740px) and (max-width: 760px), (max-height: 600px), (prefers-reduced-motion: reduce)');
+  let previousScene = -1;
+  let previousStatic = null;
   let scheduled = false;
   const update = () => {
     scheduled = false;
@@ -44,21 +49,24 @@
     const travel = Math.max(stage.offsetHeight - window.innerHeight, 1);
     const progress = Math.max(0, Math.min(1, -rect.top / travel));
     root.style.setProperty('--progress', progress.toFixed(3));
-    const clamp = (value) => Math.max(0, Math.min(1, value));
-    const phaseTwo = clamp((progress - .2) / .38);
-    const phaseThree = clamp((progress - .62) / .3);
-    const sceneOne = clamp(1 - progress / .24);
-    const sceneTwo = Math.min(clamp((progress - .16) / .18), clamp((.72 - progress) / .16));
-    const sceneThree = clamp((progress - .62) / .18);
-    root.style.setProperty('--scene-one', sceneOne.toFixed(3));
-    root.style.setProperty('--scene-two', sceneTwo.toFixed(3));
-    root.style.setProperty('--scene-three', sceneThree.toFixed(3));
-    root.style.setProperty('--phase-two', phaseTwo.toFixed(3));
-    root.style.setProperty('--phase-three', phaseThree.toFixed(3));
-    root.style.setProperty('--card-one-exit', clamp(progress / .34).toFixed(3));
-    root.style.setProperty('--card-two-enter', clamp((progress - .16) / .28).toFixed(3));
-    root.style.setProperty('--card-two-exit', clamp((progress - .6) / .2).toFixed(3));
-    root.style.setProperty('--card-three-enter', clamp((progress - .62) / .28).toFixed(3));
+    const active = Math.min(2, Math.floor(progress * 3));
+    const allVisible = staticLayout.matches;
+    if (active !== previousScene || allVisible !== previousStatic) {
+      copies.forEach((copy, index) => {
+        copy.classList.toggle('is-current', index === active);
+        copy.inert = !allVisible && index !== active;
+        copy.setAttribute('aria-hidden', String(!allVisible && index !== active));
+      });
+      cards.forEach((card, index) => {
+        card.classList.toggle('is-current', index === active);
+        card.classList.toggle('is-past', index < active);
+        card.inert = !allVisible && index !== active;
+        card.setAttribute('aria-hidden', String(!allVisible && index !== active));
+      });
+      document.dispatchEvent(new CustomEvent('kz:scene-change'));
+      previousScene = active;
+      previousStatic = allVisible;
+    }
     const readingLine = window.innerHeight * .42;
     const activeSection = navSections.find(({ element }) => {
       const bounds = element.getBoundingClientRect();
@@ -98,5 +106,7 @@
   };
   window.addEventListener('scroll', schedule, { passive: true });
   window.addEventListener('resize', schedule, { passive: true });
+  reduceMotion.addEventListener("change", schedule);
+  document.addEventListener("kz:content-ready", schedule);
   update();
 })();

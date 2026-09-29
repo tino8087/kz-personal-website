@@ -4,6 +4,10 @@ const SESSION_PATTERN = /^[a-f0-9-]{16,64}$/i;
 const DEVICES = new Set(['Mobile', 'Desktop', 'Tablet', 'Other']);
 
 export async function onRequestPost({ request, env }) {
+  // Also reject old/cached clients when this browser has opted out.
+  if ((request.headers.get('Cookie') || '').split(';').some(item => item.trim() === 'kz_analytics_exclude=1')) {
+    return json({ok:true,excluded:true},202);
+  }
   if (!env.ANALYTICS_DB) return json({ ok: false, error: 'Analytics storage is not configured.' }, 503);
   const requestUrl = new URL(request.url);
   const origin = request.headers.get('Origin');

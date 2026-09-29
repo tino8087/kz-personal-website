@@ -1,6 +1,18 @@
 (function () {
   "use strict";
 
+  // Social links on the notes page use the same tracking entry point as home.
+  document.querySelectorAll('[data-link="links.instagram.url"], [data-link="links.youtube.url"]').forEach(function (link) {
+    link.addEventListener("click", function () {
+      try {
+        if (typeof window.trackEvent === "function") window.trackEvent(
+          link.dataset.link === "links.instagram.url" ? "instagram_click" : "youtube_click",
+          { placement: "notes" }
+        );
+      } catch (_) { /* Analytics must never interrupt navigation. */ }
+    });
+  });
+
   function makeElement(tag, className, text) {
     var element = document.createElement(tag);
     if (className) element.className = className;

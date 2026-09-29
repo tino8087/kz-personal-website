@@ -46,6 +46,13 @@ assert.equal(response.status, 429);
 response = await analyticsGet({ request: new Request('https://kz-personal-website.pages.dev/api/analytics'), env: {} });
 assert.equal(response.status, 503);
 
+for (const event_name of ['view_about','view_creation','view_content_creation','view_ip_character','view_outfit_diary','view_life','view_links']) {
+  response = await eventPost({request:new Request('https://kz-personal-website.pages.dev/api/events',{method:'POST',body:JSON.stringify({...valid,event_name})}),env:{ANALYTICS_DB:database()}});
+  assert.equal(response.status,202,event_name);
+}
+response = await analyticsGet({request:new Request('https://kz-personal-website.pages.dev/api/analytics'),env:{CF_ACCESS_TEAM_DOMAIN:'https://example.cloudflareaccess.com',CF_ACCESS_AUD:'test'}});
+assert.equal(response.status,401);
+
 const fixture = { resources: [{ published: true, slug: 'test-resource', title: '測試內容', description: '說明', published_date: '2026-09-17', content: [{ heading: '第一段', paragraphs: ['內容'] }] }] };
 response = await resourceGet({
   request: new Request('https://kz-personal-website.pages.dev/resources/test-resource/'),
